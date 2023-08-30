@@ -13,7 +13,7 @@ To build the project, run `pnpm build`
 
 To lint the project, run `pnpm lint`
 
-To deploy the project to the server, run `pnpm deploy` (must have GitHub credentials)
+To deploy the project to the server, run `pnpm run deploy` (must have GitHub credentials)
 
 ## Customize Vite configuration
 See [Configuration Reference](https://vitejs.dev/config/).
