@@ -20,11 +20,11 @@ export class Experiment {
   times: Array<number>;
   temps: Array<number>;
 
-  output: string = "";
+  output = "";
 
   g_X: Array<number>;
   g_Y: Array<number>;
-  
+
   constructor(sampleId: number) {
     // v1 - __header.htm
     this.sampleId = sampleId;
@@ -47,12 +47,12 @@ export class Experiment {
     this.kWater = 12;
 
     // storage for student output
-    this.times = new Array();
-    this.temps = new Array();
+    this.times = [];
+    this.temps = [];
 
     // graph output
-    this.g_X = new Array();
-    this.g_Y = new Array();
+    this.g_X = [];
+    this.g_Y = [];
   }
 
   experiment() {
@@ -64,11 +64,12 @@ export class Experiment {
     this.wireLoss += (20 - 40 * Math.random()) / 10000;
 
     this.times[0] = 0;
-    
+
     this.temps[0] = this.tWater;
 
     for (counter == 1; counter < 6; counter++) {
-      this.tWater += (20 * dt * this.kWater * (this.tRoom - this.tWater)) / this.cTotal;
+      this.tWater +=
+        (20 * dt * this.kWater * (this.tRoom - this.tWater)) / this.cTotal;
       this.tWater += 0.001 - 0.002 * Math.random();
 
       this.times[counter] = counter;
@@ -82,7 +83,8 @@ export class Experiment {
     counter = 5;
     i = 101;
     for (i == 101; i < 105; i++) {
-      this.tWater += (dt * this.kWater * (this.tRoom - this.tWater)) / this.cTotal;
+      this.tWater +=
+        (dt * this.kWater * (this.tRoom - this.tWater)) / this.cTotal;
       this.tWater += 0.001 - 0.002 * Math.random();
 
       // PLOTS THESE POINTS (p101 => p104)
@@ -91,15 +93,26 @@ export class Experiment {
     }
 
     let tBomb = this.tWater;
-    let tGas = this.tWater + (this.sampleWgt * Number(Samples[this.sampleId].sE) + 5858 * this.wireLoss) / this.cContents;
-    
+    let tGas =
+      this.tWater +
+      (this.sampleWgt * Number(Samples[this.sampleId].sE) +
+        5858 * this.wireLoss) /
+        this.cContents;
+
     i = 105;
     for (i == 105; i < 201; i++) {
       if (i == 160) spacer = 20;
       tGas += (this.kGas * dt * (tBomb - tGas)) / this.cContents;
-      tBomb += ((this.kGas * (tGas - tBomb) + this.kBomb * (this.tWater - tBomb)) * dt) / this.cBomb;
-      this.tWater += ((this.kBomb * (tBomb - this.tWater) + this.kWater * (this.tRoom - this.tWater)) * dt) / this.cRig;
-      
+      tBomb +=
+        ((this.kGas * (tGas - tBomb) + this.kBomb * (this.tWater - tBomb)) *
+          dt) /
+        this.cBomb;
+      this.tWater +=
+        ((this.kBomb * (tBomb - this.tWater) +
+          this.kWater * (this.tRoom - this.tWater)) *
+          dt) /
+        this.cRig;
+
       // PLOTS THESE POINTS (p105 => p200)
       this.g_X.push(i / 20);
       this.g_Y.push(this.tWater);
@@ -114,9 +127,18 @@ export class Experiment {
     i = 11;
     for (i == 11; i < 19; i++) {
       tGas += (20 * this.kGas * dt * (tBomb - tGas)) / this.cContents;
-      tBomb += (20 * (this.kGas * (tGas - tBomb) + this.kBomb * (this.tWater - tBomb)) * dt) / this.cBomb;
-      this.tWater += (20 * (this.kBomb * (tBomb - this.tWater) + this.kWater * (this.tRoom - this.tWater)) * dt) / this.cRig;
-      
+      tBomb +=
+        (20 *
+          (this.kGas * (tGas - tBomb) + this.kBomb * (this.tWater - tBomb)) *
+          dt) /
+        this.cBomb;
+      this.tWater +=
+        (20 *
+          (this.kBomb * (tBomb - this.tWater) +
+            this.kWater * (this.tRoom - this.tWater)) *
+          dt) /
+        this.cRig;
+
       // PLOTS THESE POINTS (p220 => p280)
       this.g_X.push(i);
       this.g_Y.push(this.tWater);
@@ -133,12 +155,7 @@ export class Experiment {
     for (i == 1; i <= counter; i++) {
       dummy = Math.round(100 * this.times[i]).toString();
       if (this.times[i] < 10) dummy = " " + dummy;
-      isay +=
-        " " +
-        dummy.substring(0, 2) +
-        "." +
-        dummy.substring(2) +
-        "      ";
+      isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + "      ";
       dummy = Math.round(1000 * this.temps[i]).toString();
       isay += dummy.substring(0, 2) + "." + dummy.substring(2) + "\n";
     }
@@ -172,7 +189,9 @@ export class Experiment {
     denom = NN * sxx - sx * sx;
     const aslope = (NN * sxy - sx * sy) / denom;
     const aint = (sy * sxx - sx * sxy) / denom;
-    const adev = Math.sqrt(Math.abs((syy - aslope * sxy - aint * sy) / (NN - 2)));
+    const adev = Math.sqrt(
+      Math.abs((syy - aslope * sxy - aint * sy) / (NN - 2))
+    );
     i = 22;
     sx = 0;
     sy = 0;
@@ -194,8 +213,17 @@ export class Experiment {
     denom = NN * sxx - sx * sx;
     const bslope = (NN * sxy - sx * sy) / denom;
     const bint = (sy * sxx - sx * sxy) / denom;
-    const bdev = Math.sqrt(Math.abs((syy - bslope * sxy - bint * sy) / (NN - 2)));
+    const bdev = Math.sqrt(
+      Math.abs((syy - bslope * sxy - bint * sy) / (NN - 2))
+    );
 
-    return { aslope: aslope, aint: aint, adev: adev, bslope: bslope, bint: bint, bdev: bdev }
+    return {
+      aslope: aslope,
+      aint: aint,
+      adev: adev,
+      bslope: bslope,
+      bint: bint,
+      bdev: bdev,
+    };
   }
 }

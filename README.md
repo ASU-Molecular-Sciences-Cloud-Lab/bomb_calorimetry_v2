@@ -7,7 +7,7 @@ This project uses [pnpm](https://pnpm.io/) to manage packages
 
 To install all packages, run `pnpm install`
 
-To run the hot-reloading dev environment, run `pnpm dev`
+To run the hot-reloading dev environment, run `pnpm serve`
 
 To build the project, run `pnpm build`
 

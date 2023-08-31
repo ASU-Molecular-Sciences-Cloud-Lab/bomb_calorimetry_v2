@@ -14,12 +14,18 @@
         show-select
         return-object
       ></v-data-table>
-      <v-btn color="green" :disabled="!(selected.length > 0)" to="/calorimetry" @click="setSample(samples.indexOf(selected[0]))">Take it to the scale</v-btn>
+      <v-btn
+        color="green"
+        :disabled="!(selected.length > 0)"
+        to="/calorimetry"
+        @click="setSample(samples.indexOf(selected[0]))"
+        >Take it to the scale</v-btn
+      >
     </v-responsive>
   </v-container>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { Samples } from "@/ts/samples"
 
 export default {
@@ -40,10 +46,9 @@ export default {
     }
   },
   methods: {
-    setSample(sample: number) {
+    setSample(sample) {
       this.$store.commit('setSample', sample)
     }
   },
 };
 </script>
-  

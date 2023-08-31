@@ -3,15 +3,12 @@
     <v-responsive class="text-center fill-height">
       <h2>Run the simulation</h2>
       <h3 id="sample_name"></h3>
-      
+
       <v-row align="center" justify="center" style="margin-top: 20px">
-        <div id="graph" style="width:600px; height:300px;"></div>
+        <div id="graph" style="width: 600px; height: 300px"></div>
         <v-table>
           <tbody>
-            <tr
-              v-for="item in tableData"
-              :key="item.name"
-            >
+            <tr v-for="item in tableData" :key="item.name">
               <td>{{ item.name }}</td>
               <td>{{ item.value }}</td>
             </tr>
@@ -20,9 +17,19 @@
       </v-row>
       <v-row align="center" justify="center">
         <v-spacer />
-        <v-btn color="red" @click="experiment" :disabled="ran != 0 || $store.getters.getSample < 0">Ignite</v-btn>
+        <v-btn
+          color="red"
+          @click="experiment"
+          :disabled="ran != 0 || $store.getters.getSample < 0"
+          >Ignite</v-btn
+        >
         <v-spacer />
-        <v-btn color="green" @click="extrapolate" :disabled="ran != 1 || $store.getters.getSample < 0">Extrapolate</v-btn>
+        <v-btn
+          color="green"
+          @click="extrapolate"
+          :disabled="ran != 1 || $store.getters.getSample < 0"
+          >Extrapolate</v-btn
+        >
         <v-spacer />
         <v-dialog
           v-model="dialog"
@@ -31,30 +38,23 @@
           transition="dialog-bottom-transition"
         >
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" color="blue" @click="results" :disabled="ran != 2 || $store.getters.getSample < 0">View Results</v-btn>
+            <v-btn
+              v-bind="props"
+              color="blue"
+              :disabled="ran != 2 || $store.getters.getSample < 0"
+              >View Results</v-btn
+            >
           </template>
           <v-card>
-            <v-toolbar
-              dark
-              color="primary"
-            >
-              <v-btn
-                icon
-                dark
-                @click="dialog = false"
-              >
+            <v-toolbar dark color="primary">
+              <v-btn icon dark @click="dialog = false">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
               <v-toolbar-title>Test Results</v-toolbar-title>
             </v-toolbar>
 
             <v-row style="margin: 10px 20%">
-              <v-textarea
-                v-model="data"
-                auto-grow
-                readonly
-                >
-              </v-textarea>
+              <v-textarea v-model="data" auto-grow readonly> </v-textarea>
               <v-col fluid>
                 <h2>{{ samples[$store.getters.getSample].sName }}</h2>
                 <h3>{{ samples[$store.getters.getSample].sFormula }}</h3>
@@ -62,19 +62,21 @@
                   <tbody>
                     <tr>
                       <td>Molecular Weight</td>
-                      <td>{{ samples[$store.getters.getSample].sM + " g/mol" }}</td>
+                      <td>
+                        {{ samples[$store.getters.getSample].sM + " g/mol" }}
+                      </td>
                     </tr>
-                    <tr
-                      v-for="item in tableData"
-                      :key="item.name"
-                    >
+                    <tr v-for="item in tableData" :key="item.name">
                       <td>{{ item.name }}</td>
-                      <td>{{ 
-                        item.value + (() => {
-                          if (item.name.includes("Temp")) return " °C" 
-                          else return " g"
-                        })()
-                      }}</td>
+                      <td>
+                        {{
+                          item.value +
+                          (() => {
+                            if (item.name.includes("Temp")) return " °C";
+                            else return " g";
+                          })()
+                        }}
+                      </td>
                     </tr>
                   </tbody>
                 </v-table>
@@ -112,7 +114,7 @@ export default {
     const sampleId = this.$store.getters.getSample;
     const sample_name = document.getElementById("sample_name");
     if (sampleId >= 0) {
-      sample_name.textContent = Samples[sampleId].sName;  
+      sample_name.textContent = Samples[sampleId].sName;
     } else {
       sample_name.textContent = "No Sample Selected";
     }
@@ -129,12 +131,12 @@ export default {
     // setup Plotly
     GRAPH = document.getElementById('graph');
     Plotly.newPlot(
-      GRAPH, 
+      GRAPH,
       [{
         x: [],
-        y: [] 
-      }], 
-      { margin: { t: 0 } } 
+        y: []
+      }],
+      { margin: { t: 0 } }
     );
 
   },
@@ -148,24 +150,24 @@ export default {
         this.output = output;
 
         Plotly.react(
-          GRAPH, 
+          GRAPH,
           [{
             x: this.exp.g_X,
             y: this.exp.g_Y,
             mode: 'lines',
-          }], 
-          { margin: { t: 0 } } 
+          }],
+          { margin: { t: 0 } }
         );
-        
+
         this.tableData[4].value = Math.round(this.exp.wireAfter*1000) / 1000;
         this.ran = 1;
       }
-    }, 
+    },
     extrapolate() {
-      let l1_x = new Array();
-      let l1_y = new Array();
-      let l2_x = new Array();
-      let l2_y = new Array();
+      let l1_x = [];
+      let l1_y = [];
+      let l2_x = [];
+      let l2_y = [];
 
       let aint = this.output.aint;
       let aslope = this.output.aslope;
@@ -188,14 +190,14 @@ export default {
       }
 
       Plotly.react(
-        GRAPH, 
+        GRAPH,
         [
           {
             x: this.exp.g_X,
             y: this.exp.g_Y,
             name: 'Data',
             mode: 'lines',
-          }, 
+          },
           {
             x: l1_x,
             y: l1_y,
@@ -204,7 +206,7 @@ export default {
             line: {
               dash: 'dash'
             }
-          }, 
+          },
           {
             x: l2_x,
             y: l2_y,
@@ -214,16 +216,12 @@ export default {
               dash: 'dash'
             }
           }
-        ], 
+        ],
         { margin: { t: 0 }, hovermode: 'x' }
       );
 
       this.ran = 2;
-    },
-    results() {
-
     }
   },
 };
 </script>
-    

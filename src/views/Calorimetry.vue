@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-  import CalorimetryPage from "@/components/CalorimetryPage.vue"
+import CalorimetryPage from "@/components/CalorimetryPage.vue";
 </script>

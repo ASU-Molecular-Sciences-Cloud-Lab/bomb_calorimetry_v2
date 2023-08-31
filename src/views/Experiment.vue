@@ -3,6 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-  import SamplePage from '@/components/SamplePage.vue'
+import SamplePage from "@/components/SamplePage.vue";
 </script>
-  
