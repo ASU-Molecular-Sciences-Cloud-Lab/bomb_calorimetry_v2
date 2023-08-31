@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkbomb_calorimetry_v2"]=self["webpackChunkbomb_calorimetry_v2"]||[]).push([[149],{149:function(n,s,u){u.r(s),u.d(s,{default:function(){return c}});var e=u(9014),r=(0,e.aZ)({__name:"Discussion",setup(n){return(n,s)=>((0,e.wg)(),(0,e.iD)("h1",null,"Discussion"))}});const t=r;var c=t}}]);
+//# sourceMappingURL=149.6f9fa560.js.map

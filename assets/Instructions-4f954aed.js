@@ -1,1 +1,0 @@
-import{B as e,Q as n,C as t}from"./index-3272d48d.js";const a=e({__name:"Instructions",setup(o){return(s,r)=>(t(),n("h1",null,"Instructions"))}});export{a as default};
