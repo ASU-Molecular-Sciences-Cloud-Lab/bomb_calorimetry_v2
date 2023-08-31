@@ -5,6 +5,7 @@ export class Experiment {
   cBomb: number;
   tRoom: number;
   sampleWgt: number;
+  itWater: number;
   tWater: number;
   cContents: number;
   cParts: number;
@@ -32,6 +33,7 @@ export class Experiment {
     this.tRoom = 22 + 3.8 * Math.random();
     this.sampleWgt = Math.round(9000 + 2000 * Math.random()) / 10000;
     this.tWater = 24 + 0.1 * Math.round(0.5 + 4 * Math.random());
+    this.itWater = this.tWater;
 
     // v1 - exp.htm
     this.cContents = 50;
@@ -56,6 +58,8 @@ export class Experiment {
   }
 
   experiment() {
+    this.tWater = Number(this.itWater);
+
     const dt = 0.05;
     let i = 1;
     let counter = 1;

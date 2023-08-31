@@ -5,12 +5,30 @@
       <h3 id="sample_name"></h3>
 
       <v-row align="center" justify="center" style="margin-top: 20px">
-        <div id="graph" style="width: 600px; height: 300px"></div>
+        <div id="graph" style="width: 550px; height: 300px"></div>
         <v-table>
           <tbody>
             <tr v-for="item in tableData" :key="item.name">
               <td>{{ item.name }}</td>
-              <td>{{ item.value }}</td>
+              <td style="width: 50%">
+                <v-text-field
+                  v-if="item.name === 'Sample Weight'"
+                  v-model="exp.sampleWgt"
+                  hide-details
+                  single-line
+                  type="number"
+                  :disabled="ran != 0 || $store.getters.getSample < 0"
+                />
+                <v-text-field
+                  v-else-if="item.name === 'Water Temp'"
+                  v-model="exp.itWater"
+                  hide-details
+                  single-line
+                  type="number"
+                  :disabled="ran != 0 || $store.getters.getSample < 0"
+                />
+                <div v-else>{{ item.value }}</div>
+              </td>
             </tr>
           </tbody>
         </v-table>
@@ -80,6 +98,9 @@
                     </tr>
                   </tbody>
                 </v-table>
+
+                <h4>T initial: {{ Math.round(T.Ti * 1000) / 1000 }}°C</h4>
+                <h4>T final: {{ Math.round(T.Tf * 1000) / 1000 }}°C</h4>
               </v-col>
             </v-row>
           </v-card>
@@ -107,6 +128,7 @@ export default {
       ran: 0,
       tableData: [],
       dialog: false,
+      T: { Ti: 0, Tf: 0 }
     }
   },
   mounted() {
@@ -136,7 +158,15 @@ export default {
         x: [],
         y: []
       }],
-      { margin: { t: 0 } }
+      {
+        margin: { t: 0 },
+        xaxis: {
+          title: 'Time (min)'
+        },
+        yaxis: {
+          title: 'Temperature (°C)'
+        }
+      }
     );
 
   },
@@ -156,12 +186,24 @@ export default {
             y: this.exp.g_Y,
             mode: 'lines',
           }],
-          { margin: { t: 0 } }
+          {
+            margin: { t: 0 },
+            xaxis: {
+              title: 'Time (min)'
+            },
+            yaxis: {
+              title: 'Temperature (°C)'
+            }
+          }
         );
 
         this.tableData[4].value = Math.round(this.exp.wireAfter*1000) / 1000;
         this.ran = 1;
       }
+
+      // Finalize tableData
+      this.tableData[0].value = Math.round(this.exp.sampleWgt*1000) / 1000;
+      this.tableData[1].value = Math.round(this.exp.itWater*1000) / 1000;
     },
     extrapolate() {
       let l1_x = [];
@@ -169,6 +211,7 @@ export default {
       let l2_x = [];
       let l2_y = [];
 
+      // Compute lines
       let aint = this.output.aint;
       let aslope = this.output.aslope;
       let bint = this.output.bint;
@@ -189,36 +232,141 @@ export default {
         l2_y.push(tt);
       }
 
-      Plotly.react(
-        GRAPH,
-        [
+      // Compute initial Ti and Tf
+      let x0 = 7;
+      let y0 = aint + aslope * (0.125 + x0);
+      let y1 = bint + bslope * (0.125 + x0);
+      this.T.Ti = y0;
+      this.T.Tf = y1;
+
+      // Setup vertical line between Ti and Tf
+      let verticalLine = {
+        type: 'line',
+        x0: x0,
+        y0: y0,
+        x1: x0,
+        y1: y1,
+        line: {
+          color: 'grey',
+          width: 1.5,
+          dash: 'dot'
+        }
+      };
+
+      // Setup layout
+      let layout = {
+        margin: { t: 0 },
+        hovermode: 'x',
+        xaxis: {
+          title: 'Time (min)',
+          spikemode: 'across'
+        },
+        yaxis: {
+          title: 'Temperature (°C)'
+        },
+        shapes: [verticalLine],
+        annotations: [
           {
-            x: this.exp.g_X,
-            y: this.exp.g_Y,
-            name: 'Data',
-            mode: 'lines',
+            x: x0,
+            y: y0,
+            xref: 'x',
+            yref: 'y',
+            text: 'T initial = ' + Math.round(y0*1000) / 1000,
+            showarrow: true,
+            arrowhead: 7,
+            ax: 10,
+            ay: 20
           },
           {
-            x: l1_x,
-            y: l1_y,
-            name: '',
-            mode: 'lines',
-            line: {
-              dash: 'dash'
-            }
-          },
-          {
-            x: l2_x,
-            y: l2_y,
-            name: '',
-            mode: 'lines',
-            line: {
-              dash: 'dash'
-            }
+            x: x0,
+            y: y1,
+            xref: 'x',
+            yref: 'y',
+            text: 'T final = ' + Math.round(y1*1000) / 1000,
+            showarrow: true,
+            arrowhead: 7,
+            ax: -10,
+            ay: -20
           }
-        ],
-        { margin: { t: 0 }, hovermode: 'x' }
-      );
+        ]
+      };
+
+      // Finalize data with extrapolated lines
+      let data = [
+        {
+          x: this.exp.g_X,
+          y: this.exp.g_Y,
+          name: 'Data',
+          mode: 'lines',
+        },
+        {
+          x: l1_x,
+          y: l1_y,
+          name: '',
+          mode: 'lines',
+          line: {
+            dash: 'dash'
+          }
+        },
+        {
+          x: l2_x,
+          y: l2_y,
+          name: '',
+          mode: 'lines',
+          line: {
+            dash: 'dash'
+          }
+        }
+      ];
+
+      // Update Plotly
+      Plotly.react(GRAPH, data, layout);
+
+      // Necessary beceause the Plotly click event captures a different `this` context
+      // eslint-disable-next-line
+      const obj = this;
+
+      // Graph click events
+      GRAPH.on('plotly_click', function(data){
+        const x = data.points[0].x;
+        const y1 = aint + aslope * (0.125 + x);
+        const y2 = bint + bslope * (0.125 + x);
+
+        verticalLine.x0 = x;
+        verticalLine.x1 = x;
+        verticalLine.y0 = y1;
+        verticalLine.y1 = y2;
+        obj.T.Ti = y1;
+        obj.T.Tf = y2;
+
+        layout.shapes = [verticalLine];
+        layout.annotations = [
+          {
+            x: x,
+            y: y1,
+            xref: 'x',
+            yref: 'y',
+            text: 'T initial = ' + Math.round(y1*1000) / 1000,
+            showarrow: true,
+            arrowhead: 7,
+            ax: 10,
+            ay: 20
+          },
+          {
+            x: x,
+            y: y2,
+            xref: 'x',
+            yref: 'y',
+            text: 'T final = ' + Math.round(y2*1000) / 1000,
+            showarrow: true,
+            arrowhead: 7,
+            ax: -10,
+            ay: -20
+          }
+        ]
+
+        Plotly.relayout(GRAPH, layout);
+      });
 
       this.ran = 2;
     }
