@@ -59,7 +59,7 @@
             <v-btn
               v-bind="props"
               color="blue"
-              :disabled="ran != 2 || $store.getters.getSample < 0"
+              :disabled="ran < 1 || $store.getters.getSample < 0"
               >View Results</v-btn
             >
           </template>
@@ -99,8 +99,8 @@
                   </tbody>
                 </v-table>
 
-                <h4>T initial: {{ Math.round(T.Ti * 1000) / 1000 }}°C</h4>
-                <h4>T final: {{ Math.round(T.Tf * 1000) / 1000 }}°C</h4>
+                <h4>T initial: {{ numberOrString(T.Ti) }}°C</h4>
+                <h4>T final: {{ numberOrString(T.Tf) }}°C</h4>
               </v-col>
             </v-row>
           </v-card>
@@ -128,7 +128,7 @@ export default {
       ran: 0,
       tableData: [],
       dialog: false,
-      T: { Ti: 0, Tf: 0 }
+      T: { Ti: "?", Tf: "?" }
     }
   },
   mounted() {
@@ -369,6 +369,13 @@ export default {
       });
 
       this.ran = 2;
+    },
+    numberOrString(x) {
+      if (typeof x === 'string' || x instanceof String) {
+        return x;
+      } else {
+        return Math.round(x*1000) / 1000;
+      }
     }
   },
 };
