@@ -1,1273 +1,172 @@
-<style>
-    /* start css.sty */
-    .cmex-10 {
-      font-size: 83%;
-    }
-    .fbb-Regular-tlf-t1-x-x-120 {
-      font-name: "fbb", serif;
-    }
-    .fbb-Regular-tlf-t1-x-x-120 {
-      font-name: "fbb", serif;
-    }
-    .cmbsy-10x-x-120 {
-      font-weight: bold;
-    }
-    .cmbsy-10x-x-120 {
-      font-weight: bold;
-    }
-    .cmbsy-10x-x-120 {
-      font-weight: bold;
-    }
-    .cmbsy-8 {
-      font-size: 66%;
-      font-weight: bold;
-    }
-    .cmbsy-8 {
-      font-weight: bold;
-    }
-    .cmbsy-8 {
-      font-weight: bold;
-    }
-    .cmbsy-6 {
-      font-size: 50%;
-      font-weight: bold;
-    }
-    .cmbsy-6 {
-      font-weight: bold;
-    }
-    .cmbsy-6 {
-      font-weight: bold;
-    }
-    .cmr-8 {
-      font-size: 66%;
-    }
-    .cmr-6 {
-      font-size: 50%;
-    }
-    .cmmi-12 {
-      font-style: italic;
-    }
-    .cmmi-8 {
-      font-size: 66%;
-      font-style: italic;
-    }
-    .cmmi-6 {
-      font-size: 50%;
-      font-style: italic;
-    }
-    .cmsy-8 {
-      font-size: 66%;
-    }
-    .cmsy-6 {
-      font-size: 50%;
-    }
-    .fbb-Regular-tlf-t1-x-x-207 {
-      font-size: 172%;
-      font-name: "fbb", serif;
-    }
-    .fbb-Regular-tlf-t1-x-x-207 {
-      font-name: "fbb", serif;
-    }
-    .fbb-Bold-tlf-t1-x-x-120 {
-      font-weight: bold;
-      font-name: "fbb", serif;
-    }
-    .ecss-1000 {
-      font-size: 83%;
-      font-family: sans-serif;
-    }
-    .ecss-1000 {
-      font-family: sans-serif;
-    }
-    .ecss-1000 {
-      font-family: sans-serif;
-    }
-    .ectt-1200 {
-      font-family: monospace, monospace;
-    }
-    .ectt-1200 {
-      font-family: monospace, monospace;
-    }
-    .ectt-1200 {
-      font-family: monospace, monospace;
-    }
-    p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    p.indent {
-      text-indent: 0;
-    }
-    p + p {
-      margin-top: 1em;
-    }
-    p + div,
-    p + pre {
-      margin-top: 1em;
-    }
-    div + p,
-    pre + p {
-      margin-top: 1em;
-    }
-    a {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      word-break: break-word;
-      hyphens: auto;
-    }
-    @media print {
-      div.crosslinks {
-        visibility: hidden;
-      }
-    }
-    table.tabular {
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
-    a img {
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-    }
-    center {
-      margin-top: 1em;
-      margin-bottom: 1em;
-    }
-    td center {
-      margin-top: 0em;
-      margin-bottom: 0em;
-    }
-    .Canvas {
-      position: relative;
-    }
-    math {
-      text-indent: 0em;
-    }
-    li p.indent {
-      text-indent: 0em;
-    }
-    li p:first-child {
-      margin-top: 0em;
-    }
-    li p:last-child,
-    li div:last-child {
-      margin-bottom: 0.5em;
-    }
-    li p:first-child {
-      margin-bottom: 0;
-    }
-    li p ~ ul:last-child,
-    li p ~ ol:last-child {
-      margin-bottom: 0.5em;
-    }
-    .enumerate1 {
-      list-style-type: decimal;
-    }
-    .enumerate2 {
-      list-style-type: lower-alpha;
-    }
-    .enumerate3 {
-      list-style-type: lower-roman;
-    }
-    .enumerate4 {
-      list-style-type: upper-alpha;
-    }
-    div.newtheorem {
-      margin-bottom: 2em;
-      margin-top: 2em;
-    }
-    div.newtheorem .head {
-      font-weight: bold;
-    }
-    .obeylines-h,
-    .obeylines-v {
-      white-space: nowrap;
-    }
-    div.obeylines-v p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    .overline {
-      text-decoration: overline;
-    }
-    .overline img {
-      border-top: 1px solid black;
-    }
-    td.displaylines {
-      text-align: center;
-      white-space: nowrap;
-    }
-    .centerline {
-      text-align: center;
-    }
-    .rightline {
-      text-align: right;
-    }
-    pre.verbatim {
-      font-family: monospace, monospace;
-      text-align: left;
-      clear: both;
-    }
-    .fbox {
-      padding-left: 3pt;
-      padding-right: 3pt;
-      text-indent: 0pt;
-      border: solid black 0.4pt;
-    }
-    div.fbox {
-      display: table;
-    }
-    div.center div.fbox {
-      text-align: center;
-      clear: both;
-      padding-left: 3pt;
-      padding-right: 3pt;
-      text-indent: 0pt;
-      border: solid black 0.4pt;
-    }
-    div.minipage {
-      width: 100%;
-    }
-    div.center,
-    div.center div.center {
-      text-align: center;
-      margin-left: 1em;
-      margin-right: 1em;
-    }
-    div.center div {
-      text-align: left;
-    }
-    div.flushright,
-    div.flushright div.flushright {
-      text-align: right;
-    }
-    div.flushright div {
-      text-align: left;
-    }
-    div.flushleft {
-      text-align: left;
-    }
-    .underline {
-      text-decoration: underline;
-    }
-    .underline img {
-      border-bottom: 1px solid black;
-      margin-bottom: 1pt;
-    }
-    .framebox-c,
-    .framebox-l,
-    .framebox-r {
-      padding-left: 3pt;
-      padding-right: 3pt;
-      text-indent: 0pt;
-      border: solid black 0.4pt;
-    }
-    .framebox-c {
-      text-align: center;
-    }
-    .framebox-l {
-      text-align: left;
-    }
-    .framebox-r {
-      text-align: right;
-    }
-    span.thank-mark {
-      vertical-align: super;
-    }
-    span.footnote-mark sup.textsuperscript,
-    span.footnote-mark a sup.textsuperscript {
-      font-size: 80%;
-    }
-    div.tabular,
-    div.center div.tabular {
-      text-align: center;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    table.tabular td p {
-      margin-top: 0em;
-    }
-    table.tabular {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    td p:first-child {
-      margin-top: 0em;
-    }
-    td p:last-child {
-      margin-bottom: 0em;
-    }
-    div.td00 {
-      margin-left: 0pt;
-      margin-right: 0pt;
-    }
-    div.td01 {
-      margin-left: 0pt;
-      margin-right: 5pt;
-    }
-    div.td10 {
-      margin-left: 5pt;
-      margin-right: 0pt;
-    }
-    div.td11 {
-      margin-left: 5pt;
-      margin-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    td.td00 {
-      padding-left: 0pt;
-      padding-right: 0pt;
-    }
-    td.td01 {
-      padding-left: 0pt;
-      padding-right: 5pt;
-    }
-    td.td10 {
-      padding-left: 5pt;
-      padding-right: 0pt;
-    }
-    td.td11 {
-      padding-left: 5pt;
-      padding-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    .hline hr,
-    .cline hr {
-      height: 0px;
-      margin: 0px;
-    }
-    .hline td,
-    .cline td {
-      padding: 0;
-    }
-    .hline hr,
-    .cline hr {
-      border: none;
-      border-top: 1px solid black;
-    }
-    .hline {
-      border-top: 1px solid black;
-    }
-    .tabbing-right {
-      text-align: right;
-    }
-    div.float,
-    div.figure {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    div.float img {
-      text-align: center;
-    }
-    div.figure img {
-      text-align: center;
-    }
-    .marginpar,
-    .reversemarginpar {
-      width: 20%;
-      float: right;
-      text-align: left;
-      margin-left: auto;
-      margin-top: 0.5em;
-      font-size: 85%;
-      text-decoration: underline;
-    }
-    .marginpar p,
-    .reversemarginpar p {
-      margin-top: 0.4em;
-      margin-bottom: 0.4em;
-    }
-    .reversemarginpar {
-      float: left;
-    }
-    .equation td {
-      text-align: center;
-      vertical-align: middle;
-    }
-    td.eq-no {
-      width: 5%;
-    }
-    table.equation {
-      width: 100%;
-    }
-    div.math-display,
-    div.par-math-display {
-      text-align: center;
-    }
-    mtr.hline mtd {
-      border-bottom: black solid 1px;
-      padding-top: 2px;
-      padding-bottom: 0em;
-    }
-    mtr.hline mtd mo {
-      display: none;
-    }
-    math .texttt {
-      font-family: monospace;
-    }
-    math .textit {
-      font-style: italic;
-    }
-    math .textsl {
-      font-style: oblique;
-    }
-    math .textsf {
-      font-family: sans-serif;
-    }
-    math .textbf {
-      font-weight: bold;
-    }
-    mo.MathClass-op + mi {
-      margin-left: 0.3em;
-    }
-    mi + mo.MathClass-op {
-      margin-left: 0.3em;
-    }
-    math mstyle[mathvariant="bold"] {
-      font-weight: bold;
-      font-style: normal;
-    }
-    math mstyle[mathvariant="normal"] {
-      font-weight: normal;
-      font-style: normal;
-    }
-    .partToc a,
-    .partToc,
-    .likepartToc a,
-    .likepartToc {
-      line-height: 200%;
-      font-weight: bold;
-      font-size: 110%;
-    }
-    .chapterToc a,
-    .chapterToc,
-    .likechapterToc a,
-    .likechapterToc,
-    .appendixToc a,
-    .appendixToc {
-      line-height: 200%;
-      font-weight: bold;
-    }
-    .index-item,
-    .index-subitem,
-    .index-subsubitem {
-      display: block;
-    }
-    div.caption {
-      text-indent: -2em;
-      margin-left: 3em;
-      margin-right: 1em;
-      text-align: left;
-    }
-    div.caption span.id {
-      font-weight: bold;
-      white-space: nowrap;
-    }
-    h1.partHead {
-      text-align: center;
-    }
-    p.bibitem {
-      text-indent: -2em;
-      margin-left: 2em;
-      margin-top: 0.6em;
-      margin-bottom: 0.6em;
-    }
-    p.bibitem-p {
-      text-indent: 0em;
-      margin-left: 2em;
-      margin-top: 0.6em;
-      margin-bottom: 0.6em;
-    }
-    .paragraphHead,
-    .likeparagraphHead {
-      margin-top: 2em;
-      font-weight: bold;
-    }
-    .subparagraphHead,
-    .likesubparagraphHead {
-      font-weight: bold;
-    }
-    .verse {
-      white-space: nowrap;
-      margin-left: 2em;
-    }
-    div.maketitle {
-      text-align: center;
-    }
-    h2.titleHead {
-      text-align: center;
-    }
-    div.maketitle {
-      margin-bottom: 2em;
-    }
-    div.author,
-    div.date {
-      text-align: center;
-    }
-    div.thanks {
-      text-align: left;
-      margin-left: 10%;
-      font-size: 85%;
-      font-style: italic;
-    }
-    div.author {
-      white-space: nowrap;
-    }
-    div.abstract p {
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-    div.abstract {
-      width: 100%;
-    }
-    .abstracttitle {
-      text-align: center;
-      margin-bottom: 1em;
-    }
-    figure.float,
-    div.figure {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    figure.figure {
-      text-align: center;
-    }
-    figcaption.caption {
-      text-indent: -2em;
-      margin-left: 3em;
-      margin-right: 1em;
-      text-align: center;
-    }
-    figcaption.caption span.id {
-      font-weight: bold;
-      white-space: nowrap;
-    }
-    p + figcaption,
-    img + figcaption {
-      margin-top: 1em;
-    }
-    .abstract {
-      margin: 1em;
-    }
-    .rotatebox {
-      display: inline-block;
-    }
-    dl.enumerate-enumitem {
-      display: grid;
-      grid-template-columns: 3ch 1fr;
-    }
-    .lstlisting .label {
-      margin-right: 0.5em;
-    }
-    pre.lstlisting {
-      font-family: monospace, monospace;
-      white-space: nowrap;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    pre.lstinputlisting {
-      font-family: monospace, monospace;
-      white-space: nowrap;
-    }
-    .lstinputlisting .label {
-      margin-right: 0.5em;
-    }
-    .framedenv {
-      border: 1px solid black;
-    }
-    div.tabular,
-    div.center div.tabular {
-      text-align: center;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    table.tabular td p {
-      margin-top: 0em;
-    }
-    table.tabular {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    td p:first-child {
-      margin-top: 0em;
-    }
-    td p:last-child {
-      margin-bottom: 0em;
-    }
-    div.td00 {
-      margin-left: 0pt;
-      margin-right: 0pt;
-    }
-    div.td01 {
-      margin-left: 0pt;
-      margin-right: 5pt;
-    }
-    div.td10 {
-      margin-left: 5pt;
-      margin-right: 0pt;
-    }
-    div.td11 {
-      margin-left: 5pt;
-      margin-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    td.td00 {
-      padding-left: 0pt;
-      padding-right: 0pt;
-    }
-    td.td01 {
-      padding-left: 0pt;
-      padding-right: 5pt;
-    }
-    td.td10 {
-      padding-left: 5pt;
-      padding-right: 0pt;
-    }
-    td.td11 {
-      padding-left: 5pt;
-      padding-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    .hline hr,
-    .cline hr {
-      height: 0px;
-      margin: 0px;
-    }
-    .hline td,
-    .cline td {
-      padding: 0;
-    }
-    .hline hr,
-    .cline hr {
-      border: none;
-      border-top: 1px solid black;
-    }
-    .hline {
-      border-top: 1px solid black;
-    }
-    .MathJax_MathML {
-      text-indent: 0;
-    }
-    .titleHead,
-    .sectionHead,
-    .subsectionHead,
-    .textsf {
-      font-family: Myriad Pro, Helvetica, Arial, sans-serif;
-    }
-    .titleHead,
-    .sectionHead,
-    .subsectionHead {
-      color: FireBrick;
-    }
-    .texttt,
-    .verb,
-    .pre {
-      font-family: Inconsolata, Consolas, Courier, monospace;
-    }
-    .titleHead {
-      font-size: 32px;
-    }
-    .sectionHead {
-      font-size: 28px;
-    }
-    .subsectionHead {
-      font-size: 24px;
-    }
-    .titlemark {
-      display: inline-block;
-      width: 2em;
-    }
-    .figure img {
-      display: block;
-      margin: auto;
-    }
-    /* end css.sty */
-    
-    /* Custom CSS */
-    .container {
-      position: relative;
-      text-align: center;
-    }
-    
-    /* Bottom left text */
-    .bottom-left {
-      position: absolute;
-      bottom: 8px;
-      left: 16px;
-    }
-    
-    /* Top left text */
-    .top-left {
-      position: absolute;
-      top: 8px;
-      left: 16px;
-    }
-    
-    /* Top right text */
-    .top-right {
-      position: absolute;
-      top: 8px;
-      right: 16px;
-    }
-    
-    /* Bottom right text */
-    .bottom-right {
-      position: absolute;
-      bottom: 8px;
-      right: 16px;
-    }
-    
-    /* Centered text */
-    .centered {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: smaller;
-    }
-    
-    .emphasis {
-      border: 1px solid black;
-      background: rgb(240, 240, 240);
-      padding: 5px;
-      font-size: smaller;
-    }
-    </style>
-    
+<!DOCTYPE html> 
+<html> 
+<head> <title></title> 
+<meta charset='UTF-8' /> 
+<meta content='TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)' name='generator' /> 
+<link href='instructions.css' rel='stylesheet' type='text/css' /> 
+<!--  for beautifying  --><link href='site.css' rel='stylesheet' type='text/css' /> 
+<script type='text/x-mathjax-config'> MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } }); </script> <script src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' type='text/javascript'></script> 
+</head><body>
+   <div class='maketitle'>
+                                                                                                  
+                                                                                                  
+                                                                                                  
+                                                                                                  
 
-<div
-    style="
-      font-family: Minion Pro, Baskerville, Garamond, EB Garamond, Georgia,
-        serif;
-      font-size: 18px;
-      line-height: 1.5;
-      max-width: 40em;
-      margin: auto;
-    "
-  >
-    <div class="maketitle">
-      <h2 class="titleHead">Bomb Calorimetry Simulation – Instructions</h2>
-      <div class="author"><a href="Bomb_Calorimetry_Simulator___Instructions.pdf">View Instructions as Downloadable PDF</a></div>
-      <br />
-      <div class="date"></div>
-    </div>
-    <dl class="enumerate-enumitem">
-      <dt class="enumerate-enumitem">1.</dt>
-      <dd class="enumerate-enumitem">
-        <strong
-          ><span class="fbb-Bold-tlf-t1-x-x-120"
-            >Determination of the Calorimeter Constant</span
-          ></strong
-        ><br class="newline" />A new calorimeter is created each time this
-        program is booted. Therefore, it is necessary to determine the
-        calorimeter constant (<!-- l. 45 --><math
-          display="inline"
-          xmlns="http://www.w3.org/1998/Math/MathML"
-          ><msub
-            ><mrow><mi>C</mi></mrow
-            ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-          ></math
-        >) each time the program is run.
-        <dl class="enumerate-enumitem">
-          <dt class="enumerate-enumitem">(a)</dt>
-          <dd class="enumerate-enumitem">
-            On the opening screen, click on Choose a Sample,
-            <span class="emphasis">CHOOSE SAMPLE</span>
-          </dd>
-          <dt class="enumerate-enumitem">(b)</dt>
-          <dd class="enumerate-enumitem">
-            Click the button next to Benzoic Acid if it isn’t already selected.
-            Click on take it to the scale,
-            <span class="emphasis">TAKE IT TO THE SCALE</span>
-          </dd>
-          <dt class="enumerate-enumitem">(c)</dt>
-          <dd class="enumerate-enumitem">
-            Record the Sample Weight (about 1 gram). This may be adjusted to an
-            approximate value between 0.1 and 2 grams by clicking on the arrows
-            or entering a value directly in the text box. The initial water
-            temperature may also be adjusted between 22 and 30
-            <!-- l. 49 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msup
-                ><mrow></mrow><mrow><mi>o</mi></mrow></msup
-              ></math
-            >C.
-          </dd>
-          <dt class="enumerate-enumitem">(d)</dt>
-          <dd class="enumerate-enumitem">
-            Record the weight wire before igniting.
-          </dd>
-          <dt class="enumerate-enumitem">(e)</dt>
-          <dd class="enumerate-enumitem">
-            Click on the Ignite button,
-            <span class="emphasis">IGNITE</span>
-          </dd>
-          <dt class="enumerate-enumitem">(f)</dt>
-          <dd class="enumerate-enumitem">
-            Record the weight of the wire after ignition.
-          </dd>
-          <dt class="enumerate-enumitem">(g)</dt>
-          <dd class="enumerate-enumitem">
-            Click on extrapolate,
-            <span class="emphasis">EXTRAPOLATE</span>. Extrapolations of the
-            flat portions of the graph appear in dashed red (initial) and green
-            (final). These extrapolations are based on Linear Least Squares
-            Regression of the first five and the last six data points. The
-            uncertainty in the extrapolation of
-            <!-- l. 53 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msub
-                ><mrow><mi>T</mi></mrow
-                ><mrow><mi>i</mi></mrow></msub
-              ></math
-            >
-            is approximately 0.0015
-            <!-- l. 53 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msup
-                ><mrow></mrow><mrow><mi>o</mi></mrow></msup
-              ></math
-            >C, and the uncertainty in
-            <!-- l. 53 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msub
-                ><mrow><mi>T</mi></mrow
-                ><mrow><mi>f</mi></mrow></msub
-              ></math
-            >
-            is approximately 0.0025
-            <!-- l. 53 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msup
-                ><mrow></mrow><mrow><mi>o</mi></mrow></msup
-              ></math
-            >C.
-          </dd>
-          <dt class="enumerate-enumitem">(h)</dt>
-          <dd class="enumerate-enumitem">
-            Hovering your mouse over the plot, position the vertical blue line
-            so as to equate the two enclosed areas as in Fig. 2 of Discussion.
-            The extrapolated temperatures may change slightly.
-          </dd>
-          <dt class="enumerate-enumitem">(i)</dt>
-          <dd class="enumerate-enumitem">
-            Record the initial (T<!-- l. 55 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msub
-                ><mrow></mrow><mrow><mi>i</mi></mrow></msub
-              ></math
-            >) and final (T<!-- l. 55 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msub
-                ><mrow></mrow><mrow><mi>f</mi></mrow></msub
-              ></math
-            >) temperatures. You can downlowd the plot as a png file by clicking
-            on the camera icon (<img
-              alt="PIC"
-              height="14"
-              src="figures/camera_icon_plotly_download.png"
-              width="14"
-            />).
-          </dd>
-          <dt class="enumerate-enumitem">(j)</dt>
-          <dd class="enumerate-enumitem">
-            Click on view results,
-            <span class="emphasis">VIEW RESULTS</span>. A pop-up window will
-            appear that contains the bomb calorimetry data (time in seconds
-            versus temperature in
-            <!-- l. 56 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msup
-                ><mrow></mrow><mrow><mi>o</mi></mrow></msup
-              ></math
-            >C). This data can be copied and saved as a text file or directly
-            copy and pasted into a spreadsheet for data analysis. The plot and
-            extrapolations (data analysis and visualization) should be
-            reproduced by students using this raw simulation data, which is
-            representative of the data a student would get by doing a bomb
-            calorimetry experiment (on a standard Parr Bomb Calorimeter). A
-            summary of all the other important parameters are also summarized on
-            this pop-up page. After printing or copy and pasting this data and
-            information, the window can be closed by clicking on the
-            <span class="emphasis">X</span>
-            in the top left.
-          </dd>
-          <dt class="enumerate-enumitem">(k)</dt>
-          <dd class="enumerate-enumitem">
-            Click on Constants (
-            <span class="emphasis">CONSTANTS</span>) to obtain the energy
-            equivalents of benzoic acid and iron wire.
-            <dl class="enumerate-enumitem">
-              <dt class="enumerate-enumitem">
-                <span class="roman-numeral">i</span>.
-              </dt>
-              <dd class="enumerate-enumitem">
-                Calculate the energy released (<!-- l. 59 --><math
-                  display="inline"
-                  xmlns="http://www.w3.org/1998/Math/MathML"
-                  ><msub
-                    ><mrow><mi>E</mi></mrow
-                    ><mrow><mi mathvariant="italic">released</mi></mrow></msub
-                  ></math
-                >
-                in Joules,
-                <!-- l. 59 --><math
-                  display="inline"
-                  xmlns="http://www.w3.org/1998/Math/MathML"
-                  ><mi>J</mi></math
-                >) in the combustion: <br class="newline" /><!-- l. 60 --><math
-                  display="inline"
-                  xmlns="http://www.w3.org/1998/Math/MathML"
-                  ><mrow
-                    ><msub
-                      ><mrow><mi>E</mi></mrow
-                      ><mrow><mi mathvariant="italic">released</mi></mrow></msub
-                    >
-                    <mo class="MathClass-rel">=</mo> <mn>26425</mn
-                    ><mo class="MathClass-open" stretchy="false">(</mo
-                    ><mi mathvariant="italic">Sample</mi
-                    ><mspace class="thinspace" width="0.22em"></mspace
-                    ><mi mathvariant="italic">Wt</mi
-                    ><mo class="MathClass-close" stretchy="false">)</mo>
-                    <mo class="MathClass-bin">+</mo> <mn>5858</mn
-                    ><mo class="MathClass-open" stretchy="false">(</mo
-                    ><mi mathvariant="italic">wire</mi
-                    ><mspace class="thinspace" width="0.22em"></mspace
-                    ><mi mathvariant="italic">before</mi>
-                    <mo class="MathClass-bin">−</mo>
-                    <mi mathvariant="italic">wire</mi
-                    ><mspace class="thinspace" width="0.22em"></mspace
-                    ><mi mathvariant="italic">after</mi
-                    ><mo class="MathClass-close" stretchy="false">)</mo></mrow
-                  ></math
-                >
-              </dd>
-              <dt class="enumerate-enumitem">
-                <span class="roman-numeral">ii</span>.
-              </dt>
-              <dd class="enumerate-enumitem">
-                Calculate the Calorimeter Constant (<!-- l. 61 --><math
-                  display="inline"
-                  xmlns="http://www.w3.org/1998/Math/MathML"
-                  ><msub
-                    ><mrow><mi>C</mi></mrow
-                    ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-                  ></math
-                >
-                in
-                <!-- l. 61 --><math
-                  display="inline"
-                  xmlns="http://www.w3.org/1998/Math/MathML"
-                  ><mrow
-                    ><sup class="nicefrac"><mi>J</mi></sup
-                    ><mo class="MathClass-bin">∕</mo
-                    ><sub class="nicefrac"><mi>K</mi></sub></mrow
-                  ></math
-                >): <br class="newline" /><!-- l. 62 --><math
-                  display="inline"
-                  xmlns="http://www.w3.org/1998/Math/MathML"
-                  ><mrow
-                    ><msub
-                      ><mrow><mi>C</mi></mrow
-                      ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-                    >
-                    <mo class="MathClass-rel">=</mo
-                    ><sup class="nicefrac">
-                      <msub
-                        ><mrow><mi>E</mi></mrow
-                        ><mrow
-                          ><mi mathvariant="italic">released</mi></mrow
-                        ></msub
-                      ></sup
-                    ><mo class="MathClass-bin">∕</mo
-                    ><sub class="nicefrac"
-                      ><mo class="MathClass-open" stretchy="false">[</mo
-                      ><msub
-                        ><mrow><mi>T</mi></mrow
-                        ><mrow><mi>i</mi></mrow></msub
-                      >
-                      <mo class="MathClass-bin">−</mo>
-                      <msub
-                        ><mrow><mi>T</mi></mrow
-                        ><mrow><mi>f</mi></mrow></msub
-                      ><mo class="MathClass-close" stretchy="false">]</mo></sub
-                    ></mrow
-                  ></math
-                >
-              </dd>
-            </dl>
+<h2 class='titleHead'>Bomb Calorimetry Simulation – Instructions</h2>
+<div class='author'><a href='Bomb_Calorimetry_Simulator___Instructions.pdf'>View Instructions as Downloadable PDF</a></div>
+<br />
+<div class='date'></div>
+   </div>
+   <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+1. </dt><dd class='enumerate-enumitem'><strong><span class='fbb-Bold-tlf-t1-x-x-120'>Determination of the Calorimeter Constant</span></strong><br class='newline' />A new virtual calorimeter is created each time the web page for this web app
+   is refreshed. Therefore, it is necessary to determine the calorimeter constant
+   (<!-- l. 49 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub></math>)
+   each time the program is run.
+       <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+    (a) </dt><dd class='enumerate-enumitem'>On the opening screen, click on <span class="emphasis">CHOOSE SAMPLE</span>.
+       </dd><dt class='enumerate-enumitem'>
+    (b) </dt><dd class='enumerate-enumitem'>Click the button next to Benzoic Acid if it isn’t already selected. Click on <span class="emphasis">TAKE IT TO THE SCALE</span>.
+       </dd><dt class='enumerate-enumitem'>
+    (c) </dt><dd class='enumerate-enumitem'>Record the Sample Weight (about 1 gram). This may be adjusted to an approximate value
+       between 0.1 and 2 grams by clicking on the arrows or entering a value directly in the text box.
+       The initial water temperature may also be adjusted between 22 and 30 <!-- l. 53 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow></mrow><mrow><mi>o</mi></mrow></msup></math>C.
+       </dd><dt class='enumerate-enumitem'>
+    (d) </dt><dd class='enumerate-enumitem'>Record the weight wire before igniting.
+       </dd><dt class='enumerate-enumitem'>
+    (e) </dt><dd class='enumerate-enumitem'>Click on the <span class="emphasis">IGNITE</span> button.
+       </dd><dt class='enumerate-enumitem'>
+    (f) </dt><dd class='enumerate-enumitem'>Record the weight of the wire after ignition.
+       </dd><dt class='enumerate-enumitem'>
+    (g) </dt><dd class='enumerate-enumitem'>Click on <span class="emphasis">EXTRAPOLATE</span>. Extrapolations of the flat portions of the graph appear in dashed red (initial) and green (final).
+       These extrapolations are based on Linear Least Squares Regression of the first five and the last six
+       data points. The uncertainty in the extrapolation of <!-- l. 57 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub></math>
+       is approximately 0.0015 <!-- l. 57 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow></mrow><mrow><mi>o</mi></mrow></msup></math>C,
+       and the uncertainty in <!-- l. 57 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>T</mi></mrow><mrow><mi>f</mi></mrow></msub></math>
+       is approximately 0.0025 <!-- l. 57 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow></mrow><mrow><mi>o</mi></mrow></msup></math>C.
+                                                                                                  
+                                                                                                  
+       </dd><dt class='enumerate-enumitem'>
+    (h) </dt><dd class='enumerate-enumitem'>Hovering your mouse over the plot, position the vertical blue line so as to equate the two
+       enclosed areas as in Fig. 2 of Discussion. The extrapolated temperatures may change slightly.
+       </dd><dt class='enumerate-enumitem'>
+    (i) </dt><dd class='enumerate-enumitem'>Record the initial (T<!-- l. 59 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow></mrow><mrow><mi>i</mi></mrow></msub></math>)
+       and final (T<!-- l. 59 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow></mrow><mrow><mi>f</mi></mrow></msub></math>)
+       temperatures. You can download the plot as a png file by clicking on the camera icon (<img alt='PIC' height='14' src='figures/camera_icon_plotly_download.png' width='20' />).
+       </dd><dt class='enumerate-enumitem'>
+    (j) </dt><dd class='enumerate-enumitem'>Click on <span class="emphasis">VIEW RESULTS</span>. A pop-up window will appear that contains the bomb calorimetry data (time in seconds versus
+       temperature in <!-- l. 60 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow></mrow><mrow><mi>o</mi></mrow></msup></math>C).
+       This data can be copied and saved as a text file or directly copy and pasted into a spreadsheet for
+       data analysis. The plot and extrapolations (data analysis and visualization) should be reproduced
+       by students using this raw simulation data, which is representative of the data a student would
+       get by doing a real bomb calorimetry experiment on a standard Parr Bomb Calorimeter. A
+       summary of all of the other important parameters are also summarized on this pop-up page.
+       After printing or copy-and-pasting this data and information, the window can be closed by
+       clicking on the <span class="emphasis">X</span> in the top left.
+       </dd><dt class='enumerate-enumitem'>
+    (k) </dt><dd class='enumerate-enumitem'>Click on <span class="emphasis">CONSTANTS</span> to obtain the energy equivalents of benzoic acid and iron wire.
+            <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+          <span class='roman-numeral'>i</span>. </dt><dd class='enumerate-enumitem'>Calculate the energy released (<!-- l. 63 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>E</mi></mrow><mrow><mi mathvariant='italic'>released</mi></mrow></msub></math>
+            in Joules, <!-- l. 63 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>J</mi></math>)
+            in the combustion:
+            <!-- tex4ht:inline --><!-- l. 64 --><math display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+    <msub><mrow><mi>E</mi></mrow><mrow><mi mathvariant='italic'>released</mi></mrow></msub> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-open' stretchy='false'>(</mo><mn>26425</mn><mspace class='thinspace' width='0.17em'></mspace><mi>J</mi><mo class='MathClass-bin'>∕</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-bin'>×</mo> <mo class='MathClass-open' stretchy='false'>(</mo><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>Sample Wt.</mtext></mstyle><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-bin'>+</mo> <mo class='MathClass-open' stretchy='false'>(</mo><mn>5858</mn><mspace class='thinspace' width='0.17em'></mspace><mi>J</mi><mo class='MathClass-bin'>∕</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-bin'>×</mo> <mo class='MathClass-open' stretchy='false'>[</mo><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>Wt. wire before</mtext></mstyle><mo class='MathClass-open' stretchy='false'>(</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-bin'>−</mo><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>Wt. wire after</mtext></mstyle><mo class='MathClass-open' stretchy='false'>(</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo><mo class='MathClass-close' stretchy='false'>]</mo>
+</mrow></math>
             <p>
-              In a research situation, this determination would be repeated many
-              times to obtain a very precise average of the Calorimeter Constant
-              and its uncertainty. The visual plot of the data shown on the Bomb
-              Calorimetry Simulator is not meant to provide final data analysis
-              or visualizations for a students report. It is only designed to
-              provide preliminary visualization of the data (it is a plot of the
-              data provided in the (<span class="emphasis">VIEW RESULTS</span>)
-              and serve as an example of what students should be able to plot
-              themselves using the raw data from the simulation.
-            </p>
-          </dd>
-        </dl>
-      </dd>
-      <dt class="enumerate-enumitem">2.</dt>
-      <dd class="enumerate-enumitem">
-        <strong
-          ><span class="fbb-Bold-tlf-t1-x-x-120"
-            >Determination of the Enthalpy of Combustion (</span
-          ><!-- l. 70 --><math
-            display="inline"
-            xmlns="http://www.w3.org/1998/Math/MathML"
-            ><mrow
-              ><mi mathvariant="normal">Δ</mi
-              ><msub
-                ><mrow><mi>H</mi></mrow
-                ><mrow><mi mathvariant="italic">comb</mi></mrow></msub
-              ></mrow
-            ></math
-          ><span class="fbb-Bold-tlf-t1-x-x-120">) of a Compound</span></strong
-        >
-        <dl class="enumerate-enumitem">
-          <dt class="enumerate-enumitem">(a)</dt>
-          <dd class="enumerate-enumitem">
-            Repeat steps (a)-(k) above, choosing one of the other compounds in
-            place of Benzoic Acid.
-          </dd>
-          <dt class="enumerate-enumitem">(b)</dt>
-          <dd class="enumerate-enumitem">
-            Calculate the Molar Mass (<!-- l. 73 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mi>M</mi></math
-            >) of the compound from its chemical formula, and the number of
-            moles (<!-- l. 73 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mi>n</mi></math
-            >) burned in the experiment:
-            <br class="newline" /><!-- l. 74 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi>n</mi> <mo class="MathClass-rel">=</mo
-                ><sup class="nicefrac">
-                  <mi mathvariant="italic">Sample</mi
-                  ><mspace class="thinspace" width="0.22em"></mspace
-                  ><mi mathvariant="italic">Wt</mi></sup
-                ><mo class="MathClass-bin">∕</mo
-                ><sub class="nicefrac"><mi>M</mi></sub></mrow
-              ></math
-            >
-          </dd>
-          <dt class="enumerate-enumitem">(c)</dt>
-          <dd class="enumerate-enumitem">
-            Calculate the total energy released in the combustion (<!-- l. 75 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow><mi mathvariant="normal">Δ</mi><mi>U</mi></mrow></math
-            >), correcting for burning the wire:
-            <br class="newline" /><!-- l. 76 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi mathvariant="normal">Δ</mi><mi>U</mi
-                ><mspace class="thinspace" width="0.22em"></mspace
-                ><mo class="MathClass-open" stretchy="false">(</mo><mi>J</mi
-                ><mo class="MathClass-close" stretchy="false">)</mo>
-                <mo class="MathClass-rel">=</mo> <mo class="MathClass-bin">−</mo
-                ><msub
-                  ><mrow><mi>C</mi></mrow
-                  ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-                ><mo class="MathClass-open" stretchy="false">[</mo
-                ><msub
-                  ><mrow><mi>T</mi></mrow
-                  ><mrow><mi>i</mi></mrow></msub
-                >
-                <mo class="MathClass-bin">−</mo>
-                <msub
-                  ><mrow><mi>T</mi></mrow
-                  ><mrow><mi>f</mi></mrow></msub
-                ><mo class="MathClass-close" stretchy="false">]</mo>
-                <mo class="MathClass-bin">+</mo> <mn>5858</mn
-                ><mo class="MathClass-open" stretchy="false">(</mo
-                ><mi mathvariant="italic">wire</mi
-                ><mspace class="thinspace" width="0.22em"></mspace
-                ><mi mathvariant="italic">before</mi>
-                <mo class="MathClass-bin">−</mo>
-                <mi mathvariant="italic">wire</mi
-                ><mspace class="thinspace" width="0.22em"></mspace
-                ><mi mathvariant="italic">after</mi
-                ><mo class="MathClass-close" stretchy="false">)</mo></mrow
-              ></math
-            >
-          </dd>
-          <dt class="enumerate-enumitem">(d)</dt>
-          <dd class="enumerate-enumitem">
-            Calulate the energy released per mole of compound burned (<!-- l. 77 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow><mi mathvariant="normal">Δ</mi><mi>Ū</mi></mrow></math
-            >
-            in
-            <!-- l. 77 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><sup class="nicefrac"><mi>J</mi></sup
-                ><mo class="MathClass-bin">∕</mo
-                ><sub class="nicefrac"
-                  ><mi mathvariant="italic">mole</mi></sub
-                ></mrow
-              ></math
-            >): <br class="newline" /><!-- l. 78 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi mathvariant="normal">Δ</mi><mi>Ū</mi>
-                <mo class="MathClass-rel">=</mo
-                ><sup class="nicefrac">
-                  <mi mathvariant="normal">Δ</mi><mi>U</mi></sup
-                ><mo class="MathClass-bin">∕</mo
-                ><sub class="nicefrac"><mi>n</mi></sub></mrow
-              ></math
-            >
-          </dd>
-          <dt class="enumerate-enumitem">(e)</dt>
-          <dd class="enumerate-enumitem">
-            Balance the combustion reaction for one mole of compound, and
-            calculate the change in the number of moles of gas (<!-- l. 79 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi mathvariant="normal">Δ</mi
-                ><msub
-                  ><mrow><mi>N</mi></mrow
-                  ><mrow><mi mathvariant="italic">gas</mi></mrow></msub
-                ></mrow
-              ></math
-            >): <br class="newline" /><!-- l. 80 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi mathvariant="normal">Δ</mi
-                ><msub
-                  ><mrow><mi>N</mi></mrow
-                  ><mrow><mi mathvariant="italic">gas</mi></mrow></msub
-                ></mrow
-              ></math
-            >
-            = moles of CO<!-- l. 80 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msub
-                ><mrow></mrow><mrow><mn>2</mn></mrow></msub
-              ></math
-            >
-            formed - moles of O<!-- l. 80 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><msub
-                ><mrow></mrow><mrow><mn>2</mn></mrow></msub
-              ></math
-            >
-            consumed
-          </dd>
-          <dt class="enumerate-enumitem">(f)</dt>
-          <dd class="enumerate-enumitem">
-            Calculate the molar enthalpy of combustion (<!-- l. 81 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi mathvariant="normal">Δ</mi
-                ><mover accent="true"
-                  ><mrow><mi>H</mi></mrow
-                  ><mo accent="true">¯</mo></mover
-                ></mrow
-              ></math
-            >): <br class="newline" /><!-- l. 82 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi mathvariant="normal">Δ</mi
-                ><mover accent="true"
-                  ><mrow><mi>H</mi></mrow
-                  ><mo accent="true">¯</mo></mover
-                >
-                <mo class="MathClass-rel">=</mo> <mi mathvariant="normal">Δ</mi
-                ><mi>Ū</mi> <mo class="MathClass-bin">+</mo>
-                <mi mathvariant="normal">Δ</mi
-                ><msub
-                  ><mrow><mi>N</mi></mrow
-                  ><mrow><mi mathvariant="italic">gas</mi></mrow></msub
-                ><mi mathvariant="italic">RT</mi></mrow
-              ></math
-            >
-          </dd>
-          <dt class="enumerate-enumitem">(g)</dt>
-          <dd class="enumerate-enumitem">
-            Divide by 1000 to obtain the molar enthalpy of combustion (<!-- l. 83 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><mi mathvariant="normal">Δ</mi
-                ><msub
-                  ><mrow
-                    ><mover accent="true"
-                      ><mrow><mi>H</mi></mrow
-                      ><mo accent="true">¯</mo></mover
-                    ></mrow
-                  ><mrow><mi mathvariant="italic">comb</mi></mrow></msub
-                ></mrow
-              ></math
-            >) in
-            <!-- l. 83 --><math
-              display="inline"
-              xmlns="http://www.w3.org/1998/Math/MathML"
-              ><mrow
-                ><sup class="nicefrac"><mi mathvariant="italic">kJ</mi></sup
-                ><mo class="MathClass-bin">∕</mo
-                ><sub class="nicefrac"
-                  ><mi mathvariant="italic">mol</mi></sub
-                ></mrow
-              ></math
-            >.
-          </dd>
-        </dl>
-      </dd>
-    </dl>
-    <h3 class="likesectionHead"><a id="x1-1000"></a>References</h3>
-    <p></p>
-    <div class="thebibliography">
-      <p class="bibitem">
-        <span class="biblabel"> [1]<span class="bibsp"> </span></span
-        ><a id="Xweb1"></a
-        ><a
-          class="url"
-          href="https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/"
-          ><span class="ectt-1200"
-            >https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/</span
-          ></a
-        >
-      </p>
-    </div>
-  </div>
+            </p> 
+</dd><dt class='enumerate-enumitem'>
+         <span class='roman-numeral'>ii</span>. </dt><dd class='enumerate-enumitem'>Calculate the Calorimeter Constant (<!-- l. 65 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub></math>
+            in <!-- l. 65 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><sup class='nicefrac'><mi>J</mi></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><mi>K</mi></sub></mrow></math>):
+                                                                                                  
+                                                                                                  
+            <!-- tex4ht:inline --><!-- l. 66 --><math display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                                                            <msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub> <mo class='MathClass-rel'>=</mo><sup class='nicefrac'> <msub><mrow><mi>E</mi></mrow><mrow><mi mathvariant='italic'>released</mi></mrow></msub></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><mo class='MathClass-open' stretchy='false'>[</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub> <mo class='MathClass-bin'>−</mo> <msub><mrow><mi>T</mi></mrow><mrow><mi>f</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>]</mo></sub>
+</mrow></math>
+            <p>
+            </p> 
+</dd></dl>
+       <p>Note that there are two conversion factors above:
+       <!-- l. 70 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mn>26425</mn><mspace class='thinspace' width='0.17em'></mspace><mi>J</mi><mo class='MathClass-bin'>∕</mo><mi>g</mi></mrow></math>
+       is the energy equivalent conversion factor for the standard (benzoic acid), while
+       <!-- l. 70 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mn>5858</mn><mspace class='thinspace' width='0.17em'></mspace><mi>J</mi><mo class='MathClass-bin'>∕</mo><mi>g</mi></mrow></math>
+       is the energy equivalent for the iron (wire).
+       </p> 
+<p>In a research situation, the measurement of the Calorimeter Constant would be repeated many
+       times to determine a very precise average of the Calorimeter Constant and its uncertainty.
+       The visual plot of the data shown on the Bomb Calorimetry Simulator is not meant to
+       provide final data analysis or visualizations for a students report. It is only designed to
+       provide preliminary visualization of the data (it is a plot of the data provided after clicking
+       <span class="emphasis">VIEW RESULTS</span> and serves as an example of what students should be able to plot themselves using the raw data from
+       the simulation).
+       </p> 
+</dd></dl>
+   </dd><dt class='enumerate-enumitem'>
+2. </dt><dd class='enumerate-enumitem'><strong><span class='fbb-Bold-tlf-t1-x-x-120'>Determination of the Enthalpy of Combustion
+   (</span><!-- l. 76 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><msub><mrow><mi>H</mi></mrow><mrow><mi mathvariant='italic'>comb</mi></mrow></msub></mrow></math><span class='fbb-Bold-tlf-t1-x-x-120'>) of
+   a Compound</span></strong>
+       <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+    (a) </dt><dd class='enumerate-enumitem'>Repeat steps (a)-(k) above, choosing one of the other compounds in place of Benzoic Acid.
+       </dd><dt class='enumerate-enumitem'>
+    (b) </dt><dd class='enumerate-enumitem'>Calculate the Molar Mass (<!-- l. 79 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>M</mi></math>)
+       of the compound from its chemical formula, and the number of moles (<!-- l. 79 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>n</mi></math>)
+       burned in the experiment:
+       <!-- tex4ht:inline --><!-- l. 80 --><math display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                                                                <mi>n</mi> <mo class='MathClass-rel'>=</mo><sup class='nicefrac'> <mi mathvariant='italic'>Sample</mi><mspace class='thinspace' width='0.22em'></mspace><mi mathvariant='italic'>Wt</mi></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><mi>M</mi></sub>
+</mrow></math>
+                                                                                                  
+                                                                                                  
+       <p>
+       </p> 
+</dd><dt class='enumerate-enumitem'>
+    (c) </dt><dd class='enumerate-enumitem'>Calculate the total energy released in the combustion (<!-- l. 81 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><mi>U</mi></mrow></math>)
+       in Joules (<!-- l. 81 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>J</mi></math>),
+       correcting for the change in mass (in grams, <!-- l. 81 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>g</mi></math>)
+       of the wire due to burning:
+       <!-- tex4ht:inline --><!-- l. 82 --><math display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                  <mi mathvariant='normal'>Δ</mi><mi>U</mi> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-bin'>−</mo><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub> <mo class='MathClass-bin'>−</mo> <msub><mrow><mi>T</mi></mrow><mrow><mi>f</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-bin'>+</mo> <mo class='MathClass-open' stretchy='false'>(</mo><mn>5858</mn><mspace class='thinspace' width='0.17em'></mspace><mi>J</mi><mo class='MathClass-bin'>∕</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-bin'>×</mo> <mo class='MathClass-open' stretchy='false'>[</mo><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>Wt. wire before</mtext></mstyle><mo class='MathClass-open' stretchy='false'>(</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-bin'>−</mo><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>Wt. wire after</mtext></mstyle><mo class='MathClass-open' stretchy='false'>(</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo><mo class='MathClass-close' stretchy='false'>]</mo>
+</mrow></math>
+       <p>
+       </p> 
+</dd><dt class='enumerate-enumitem'>
+    (d) </dt><dd class='enumerate-enumitem'>Calculate the energy released per mole of compound burned (<!-- l. 83 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><mi>Ū</mi></mrow></math>
+       in <!-- l. 83 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><sup class='nicefrac'><mi>J</mi></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><mi mathvariant='italic'>mole</mi></sub></mrow></math>):
+       <!-- tex4ht:inline --><!-- l. 84 --><math display='block' xmlns='http://www.w3.org/1998/Math/MathML'>
+         <mrow>
+            <mi mathvariant='normal'>Δ</mi><mi>Ū</mi> <mo class='MathClass-rel'>=</mo>
+            
+            <sup class='nicefrac'> <mi mathvariant='normal'>Δ</mi><mi>U</mi></sup>
+            <mo class='MathClass-bin'>∕</mo>
+            <sub class='nicefrac'><mi>n</mi></sub>
+         </mrow></math>
+       <p>
+       </p> 
+</dd><dt class='enumerate-enumitem'>
+    (e) </dt><dd class='enumerate-enumitem'>Balance the combustion reaction for one mole of compound, and calculate the change in the
+       number of moles of gas (<!-- l. 85 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><msub><mrow><mi>N</mi></mrow><mrow><mi mathvariant='italic'>gas</mi></mrow></msub></mrow></math>):
+       <!-- tex4ht:inline --><!-- l. 86 --><math display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                                 <mi mathvariant='normal'>Δ</mi><msub><mrow><mi>N</mi></mrow><mrow><mi mathvariant='italic'>gas</mi></mrow></msub> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-open' stretchy='false'>[</mo><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>moles of </mtext><mstyle class='math'><mi>C</mi><msub><mrow><mi>O</mi></mrow><mrow><mn>2</mn></mrow></msub></mstyle><mtext class='textrm' mathvariant='normal'> formed</mtext></mstyle><mo class='MathClass-close' stretchy='false'>]</mo> <mo class='MathClass-bin'>−</mo> <mo class='MathClass-open' stretchy='false'>[</mo><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>moles of </mtext><mstyle class='math'><msub><mrow><mi>O</mi></mrow><mrow><mn>2</mn></mrow></msub></mstyle><mtext class='textrm' mathvariant='normal'> consumed</mtext></mstyle><mo class='MathClass-close' stretchy='false'>]</mo>
+</mrow></math>
+       <p>
+                                                                                                  
+                                                                                                  
+       </p> 
+</dd><dt class='enumerate-enumitem'>
+    (f) </dt><dd class='enumerate-enumitem'>Calculate the molar enthalpy of combustion (<!-- l. 87 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><mover accent='true'><mrow><mi>H</mi></mrow><mo accent='true'>¯</mo></mover></mrow></math>):
+       <!-- tex4ht:inline --><!-- l. 88 --><math display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                                                             <mi mathvariant='normal'>Δ</mi><mover accent='true'><mrow><mi>H</mi></mrow><mo accent='true'>¯</mo></mover> <mo class='MathClass-rel'>=</mo> <mi mathvariant='normal'>Δ</mi><mi>Ū</mi> <mo class='MathClass-bin'>+</mo> <mi mathvariant='normal'>Δ</mi><msub><mrow><mi>N</mi></mrow><mrow><mi mathvariant='italic'>gas</mi></mrow></msub><mi mathvariant='italic'>RT</mi>
+</mrow></math>
+       <p>
+       </p> 
+</dd><dt class='enumerate-enumitem'>
+    (g) </dt><dd class='enumerate-enumitem'>Divide by 1000 to obtain the molar enthalpy of combustion (<!-- l. 89 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><msub><mrow><mover accent='true'><mrow><mi>H</mi></mrow><mo accent='true'>¯</mo></mover></mrow><mrow><mi mathvariant='italic'>comb</mi></mrow></msub></mrow></math>)
+       in <!-- l. 89 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><sup class='nicefrac'><mi mathvariant='italic'>kJ</mi></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><mi mathvariant='italic'>mol</mi></sub></mrow></math>.</dd></dl>
+   </dd></dl>
+   <h3 class='likesectionHead'><a id='x1-1000'></a>References</h3>
+<p>
+     </p> 
+<div class='thebibliography'>
+     <p class='bibitem'><span class='biblabel'>
+  [1]<span class='bibsp'>   </span></span><a id='Xweb1'></a><a class='url' href='https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/'><span class='ectt-1200'>https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/</span></a></p></div>
+    
+</body> 
+</html>

@@ -1,1389 +1,188 @@
-<style>
-    /* start css.sty */
-    .cmex-10 {
-      font-size: 83%;
-    }
-    .fbb-Regular-tlf-t1-x-x-120 {
-      font-name: "fbb", serif;
-    }
-    .fbb-Regular-tlf-t1-x-x-120 {
-      font-name: "fbb", serif;
-    }
-    .cmbsy-10x-x-120 {
-      font-weight: bold;
-    }
-    .cmbsy-10x-x-120 {
-      font-weight: bold;
-    }
-    .cmbsy-10x-x-120 {
-      font-weight: bold;
-    }
-    .cmbsy-8 {
-      font-size: 66%;
-      font-weight: bold;
-    }
-    .cmbsy-8 {
-      font-weight: bold;
-    }
-    .cmbsy-8 {
-      font-weight: bold;
-    }
-    .cmbsy-6 {
-      font-size: 50%;
-      font-weight: bold;
-    }
-    .cmbsy-6 {
-      font-weight: bold;
-    }
-    .cmbsy-6 {
-      font-weight: bold;
-    }
-    .cmr-8 {
-      font-size: 66%;
-    }
-    .cmr-6 {
-      font-size: 50%;
-    }
-    .cmmi-12 {
-      font-style: italic;
-    }
-    .cmmi-8 {
-      font-size: 66%;
-      font-style: italic;
-    }
-    .cmmi-6 {
-      font-size: 50%;
-      font-style: italic;
-    }
-    .cmsy-8 {
-      font-size: 66%;
-    }
-    .cmsy-6 {
-      font-size: 50%;
-    }
-    .fbb-Regular-tlf-t1-x-x-207 {
-      font-size: 172%;
-      font-name: "fbb", serif;
-    }
-    .fbb-Regular-tlf-t1-x-x-207 {
-      font-name: "fbb", serif;
-    }
-    .fbb-BoldItalic-tlf-t1-x-x-120 {
-      font-weight: bold;
-      font-style: italic;
-      font-name: "fbb", serif;
-    }
-    .ectt-1200 {
-      font-family: monospace, monospace;
-    }
-    .ectt-1200 {
-      font-family: monospace, monospace;
-    }
-    p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    p.indent {
-      text-indent: 0;
-    }
-    p + p {
-      margin-top: 1em;
-    }
-    p + div,
-    p + pre {
-      margin-top: 1em;
-    }
-    div + p,
-    pre + p {
-      margin-top: 1em;
-    }
-    a {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      word-break: break-word;
-      hyphens: auto;
-    }
-    @media print {
-      div.crosslinks {
-        visibility: hidden;
-      }
-    }
-    table.tabular {
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
-    a img {
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-    }
-    center {
-      margin-top: 1em;
-      margin-bottom: 1em;
-    }
-    td center {
-      margin-top: 0em;
-      margin-bottom: 0em;
-    }
-    .Canvas {
-      position: relative;
-    }
-    math {
-      text-indent: 0em;
-    }
-    li p.indent {
-      text-indent: 0em;
-    }
-    li p:first-child {
-      margin-top: 0em;
-    }
-    li p:last-child,
-    li div:last-child {
-      margin-bottom: 0.5em;
-    }
-    li p:first-child {
-      margin-bottom: 0;
-    }
-    li p ~ ul:last-child,
-    li p ~ ol:last-child {
-      margin-bottom: 0.5em;
-    }
-    .enumerate1 {
-      list-style-type: decimal;
-    }
-    .enumerate2 {
-      list-style-type: lower-alpha;
-    }
-    .enumerate3 {
-      list-style-type: lower-roman;
-    }
-    .enumerate4 {
-      list-style-type: upper-alpha;
-    }
-    div.newtheorem {
-      margin-bottom: 2em;
-      margin-top: 2em;
-    }
-    div.newtheorem .head {
-      font-weight: bold;
-    }
-    .obeylines-h,
-    .obeylines-v {
-      white-space: nowrap;
-    }
-    div.obeylines-v p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    .overline {
-      text-decoration: overline;
-    }
-    .overline img {
-      border-top: 1px solid black;
-    }
-    td.displaylines {
-      text-align: center;
-      white-space: nowrap;
-    }
-    .centerline {
-      text-align: center;
-    }
-    .rightline {
-      text-align: right;
-    }
-    pre.verbatim {
-      font-family: monospace, monospace;
-      text-align: left;
-      clear: both;
-    }
-    .fbox {
-      padding-left: 3pt;
-      padding-right: 3pt;
-      text-indent: 0pt;
-      border: solid black 0.4pt;
-    }
-    div.fbox {
-      display: table;
-    }
-    div.center div.fbox {
-      text-align: center;
-      clear: both;
-      padding-left: 3pt;
-      padding-right: 3pt;
-      text-indent: 0pt;
-      border: solid black 0.4pt;
-    }
-    div.minipage {
-      width: 100%;
-    }
-    div.center,
-    div.center div.center {
-      text-align: center;
-      margin-left: 1em;
-      margin-right: 1em;
-    }
-    div.center div {
-      text-align: left;
-    }
-    div.flushright,
-    div.flushright div.flushright {
-      text-align: right;
-    }
-    div.flushright div {
-      text-align: left;
-    }
-    div.flushleft {
-      text-align: left;
-    }
-    .underline {
-      text-decoration: underline;
-    }
-    .underline img {
-      border-bottom: 1px solid black;
-      margin-bottom: 1pt;
-    }
-    .framebox-c,
-    .framebox-l,
-    .framebox-r {
-      padding-left: 3pt;
-      padding-right: 3pt;
-      text-indent: 0pt;
-      border: solid black 0.4pt;
-    }
-    .framebox-c {
-      text-align: center;
-    }
-    .framebox-l {
-      text-align: left;
-    }
-    .framebox-r {
-      text-align: right;
-    }
-    span.thank-mark {
-      vertical-align: super;
-    }
-    span.footnote-mark sup.textsuperscript,
-    span.footnote-mark a sup.textsuperscript {
-      font-size: 80%;
-    }
-    div.tabular,
-    div.center div.tabular {
-      text-align: center;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    table.tabular td p {
-      margin-top: 0em;
-    }
-    table.tabular {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    td p:first-child {
-      margin-top: 0em;
-    }
-    td p:last-child {
-      margin-bottom: 0em;
-    }
-    div.td00 {
-      margin-left: 0pt;
-      margin-right: 0pt;
-    }
-    div.td01 {
-      margin-left: 0pt;
-      margin-right: 5pt;
-    }
-    div.td10 {
-      margin-left: 5pt;
-      margin-right: 0pt;
-    }
-    div.td11 {
-      margin-left: 5pt;
-      margin-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    td.td00 {
-      padding-left: 0pt;
-      padding-right: 0pt;
-    }
-    td.td01 {
-      padding-left: 0pt;
-      padding-right: 5pt;
-    }
-    td.td10 {
-      padding-left: 5pt;
-      padding-right: 0pt;
-    }
-    td.td11 {
-      padding-left: 5pt;
-      padding-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    .hline hr,
-    .cline hr {
-      height: 0px;
-      margin: 0px;
-    }
-    .hline td,
-    .cline td {
-      padding: 0;
-    }
-    .hline hr,
-    .cline hr {
-      border: none;
-      border-top: 1px solid black;
-    }
-    .hline {
-      border-top: 1px solid black;
-    }
-    .tabbing-right {
-      text-align: right;
-    }
-    div.float,
-    div.figure {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    div.float img {
-      text-align: center;
-    }
-    div.figure img {
-      text-align: center;
-    }
-    .marginpar,
-    .reversemarginpar {
-      width: 20%;
-      float: right;
-      text-align: left;
-      margin-left: auto;
-      margin-top: 0.5em;
-      font-size: 85%;
-      text-decoration: underline;
-    }
-    .marginpar p,
-    .reversemarginpar p {
-      margin-top: 0.4em;
-      margin-bottom: 0.4em;
-    }
-    .reversemarginpar {
-      float: left;
-    }
-    .equation td {
-      text-align: center;
-      vertical-align: middle;
-    }
-    td.eq-no {
-      width: 5%;
-    }
-    table.equation {
-      width: 100%;
-    }
-    div.math-display,
-    div.par-math-display {
-      text-align: center;
-    }
-    mtr.hline mtd {
-      border-bottom: black solid 1px;
-      padding-top: 2px;
-      padding-bottom: 0em;
-    }
-    mtr.hline mtd mo {
-      display: none;
-    }
-    math .texttt {
-      font-family: monospace;
-    }
-    math .textit {
-      font-style: italic;
-    }
-    math .textsl {
-      font-style: oblique;
-    }
-    math .textsf {
-      font-family: sans-serif;
-    }
-    math .textbf {
-      font-weight: bold;
-    }
-    mo.MathClass-op + mi {
-      margin-left: 0.3em;
-    }
-    mi + mo.MathClass-op {
-      margin-left: 0.3em;
-    }
-    math mstyle[mathvariant="bold"] {
-      font-weight: bold;
-      font-style: normal;
-    }
-    math mstyle[mathvariant="normal"] {
-      font-weight: normal;
-      font-style: normal;
-    }
-    .partToc a,
-    .partToc,
-    .likepartToc a,
-    .likepartToc {
-      line-height: 200%;
-      font-weight: bold;
-      font-size: 110%;
-    }
-    .chapterToc a,
-    .chapterToc,
-    .likechapterToc a,
-    .likechapterToc,
-    .appendixToc a,
-    .appendixToc {
-      line-height: 200%;
-      font-weight: bold;
-    }
-    .index-item,
-    .index-subitem,
-    .index-subsubitem {
-      display: block;
-    }
-    div.caption {
-      text-indent: -2em;
-      margin-left: 3em;
-      margin-right: 1em;
-      text-align: left;
-    }
-    div.caption span.id {
-      font-weight: bold;
-      white-space: nowrap;
-    }
-    h1.partHead {
-      text-align: center;
-    }
-    p.bibitem {
-      text-indent: -2em;
-      margin-left: 2em;
-      margin-top: 0.6em;
-      margin-bottom: 0.6em;
-    }
-    p.bibitem-p {
-      text-indent: 0em;
-      margin-left: 2em;
-      margin-top: 0.6em;
-      margin-bottom: 0.6em;
-    }
-    .paragraphHead,
-    .likeparagraphHead {
-      margin-top: 2em;
-      font-weight: bold;
-    }
-    .subparagraphHead,
-    .likesubparagraphHead {
-      font-weight: bold;
-    }
-    .verse {
-      white-space: nowrap;
-      margin-left: 2em;
-    }
-    div.maketitle {
-      text-align: center;
-    }
-    h2.titleHead {
-      text-align: center;
-    }
-    div.maketitle {
-      margin-bottom: 2em;
-    }
-    div.author,
-    div.date {
-      text-align: center;
-    }
-    div.thanks {
-      text-align: left;
-      margin-left: 10%;
-      font-size: 85%;
-      font-style: italic;
-    }
-    div.author {
-      white-space: nowrap;
-    }
-    div.abstract p {
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-    div.abstract {
-      width: 100%;
-    }
-    .abstracttitle {
-      text-align: center;
-      margin-bottom: 1em;
-    }
-    figure.float,
-    div.figure {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    figure.figure {
-      text-align: center;
-    }
-    figcaption.caption {
-      text-indent: -2em;
-      margin-left: 3em;
-      margin-right: 1em;
-      text-align: center;
-    }
-    figcaption.caption span.id {
-      font-weight: bold;
-      white-space: nowrap;
-    }
-    p + figcaption,
-    img + figcaption {
-      margin-top: 1em;
-    }
-    .abstract {
-      margin: 1em;
-    }
-    .rotatebox {
-      display: inline-block;
-    }
-    .caption span.id {
-      font-weight: bold;
-    }
-    .wrapfig-r,
-    .wrapfig-ri,
-    .wrapfig-ir,
-    .wrapfig-ro,
-    .wrapfig-or {
-      float: right;
-      text-align: left;
-      margin-left: auto;
-      margin-top: 0.5em;
-    }
-    .wrapfig-l,
-    .wrapfig-li,
-    .wrapfig-il,
-    .wrapfig-lo,
-    .wrapfig-ol {
-      float: left;
-      text-align: left;
-      margin-right: auto;
-      margin-top: 0.5em;
-    }
-    .wrapfig-r .caption td.content,
-    .wrapfig-ri .caption td.content,
-    .wrapfig-ir .caption td.content,
-    .wrapfig-ro .caption td.content,
-    .wrapfig-or .caption td.content,
-    .wrapfig-l .caption td.content,
-    .wrapfig-li .caption td.content,
-    .wrapfig-il .caption td.content,
-    .wrapfig-lo .caption td.content,
-    .wrapfig-ol .caption td.content {
-      white-space: normal;
-    }
-    .wrapfig-r .caption,
-    .wrapfig-ri .caption,
-    .wrapfig-ir .caption,
-    .wrapfig-ro .caption,
-    .wrapfig-or .caption,
-    .wrapfig-l .caption,
-    .wrapfig-li .caption,
-    .wrapfig-il .caption,
-    .wrapfig-lo .caption,
-    .wrapfig-ol .caption {
-      width: 30%;
-    }
-    dl.enumerate-enumitem {
-      display: grid;
-      grid-template-columns: 3ch 1fr;
-    }
-    .lstlisting .label {
-      margin-right: 0.5em;
-    }
-    pre.lstlisting {
-      font-family: monospace, monospace;
-      white-space: nowrap;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    pre.lstinputlisting {
-      font-family: monospace, monospace;
-      white-space: nowrap;
-    }
-    .lstinputlisting .label {
-      margin-right: 0.5em;
-    }
-    .framedenv {
-      border: 1px solid black;
-    }
-    div.tabular,
-    div.center div.tabular {
-      text-align: center;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    table.tabular td p {
-      margin-top: 0em;
-    }
-    table.tabular {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    td p:first-child {
-      margin-top: 0em;
-    }
-    td p:last-child {
-      margin-bottom: 0em;
-    }
-    div.td00 {
-      margin-left: 0pt;
-      margin-right: 0pt;
-    }
-    div.td01 {
-      margin-left: 0pt;
-      margin-right: 5pt;
-    }
-    div.td10 {
-      margin-left: 5pt;
-      margin-right: 0pt;
-    }
-    div.td11 {
-      margin-left: 5pt;
-      margin-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    td.td00 {
-      padding-left: 0pt;
-      padding-right: 0pt;
-    }
-    td.td01 {
-      padding-left: 0pt;
-      padding-right: 5pt;
-    }
-    td.td10 {
-      padding-left: 5pt;
-      padding-right: 0pt;
-    }
-    td.td11 {
-      padding-left: 5pt;
-      padding-right: 5pt;
-    }
-    table[rules] {
-      border-left: solid black 0.4pt;
-      border-right: solid black 0.4pt;
-    }
-    .hline hr,
-    .cline hr {
-      height: 0px;
-      margin: 0px;
-    }
-    .hline td,
-    .cline td {
-      padding: 0;
-    }
-    .hline hr,
-    .cline hr {
-      border: none;
-      border-top: 1px solid black;
-    }
-    .hline {
-      border-top: 1px solid black;
-    }
-    .MathJax_MathML {
-      text-indent: 0;
-    }
-    .titleHead,
-    .sectionHead,
-    .subsectionHead,
-    .textsf {
-      font-family: Myriad Pro, Helvetica, Arial, sans-serif;
-    }
-    .titleHead,
-    .sectionHead,
-    .subsectionHead {
-      color: FireBrick;
-    }
-    .texttt,
-    .verb,
-    .pre {
-      font-family: Inconsolata, Consolas, Courier, monospace;
-    }
-    .titleHead {
-      font-size: 32px;
-    }
-    .sectionHead {
-      font-size: 28px;
-    }
-    .subsectionHead {
-      font-size: 24px;
-    }
-    .titlemark {
-      display: inline-block;
-      width: 2em;
-    }
-    .figure img {
-      display: block;
-      margin: auto;
-    }
-    /* end css.sty */
-    </style>
+<!DOCTYPE html> 
+<html> 
+<head> <title></title> 
+<meta charset='UTF-8' /> 
+<meta content='TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)' name='generator' /> 
+<link href='discussion.css' rel='stylesheet' type='text/css' /> 
+<!--  for beautifying  --><link href='site.css' rel='stylesheet' type='text/css' /> 
+<script type='text/x-mathjax-config'> MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } }); </script> <script src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' type='text/javascript'></script> 
+</head><body>
+   <div class='maketitle'>
+                                                                                                  
+                                                                                                  
+                                                                                                  
+                                                                                                  
+
+<h2 class='titleHead'>Bomb Calorimetry Simulation – Discussion</h2>
+<div class="author"><a href="Bomb_Calorimetry_Simulator___Discussion.pdf">View Discussion as Downloadable PDF</a></div>
+<br />
+<div class='date'></div>
+   </div>
+   <div class='wrapfig-r'><div class='center'>
+<p>
+</p> 
+<p><img alt='PIC' height='174' src='figures/BombCal_Diagram.png' width='174' /></p> 
+</div>                                                 </div>
+<p>   A calorimeter (calor = heat, metron = measure) is a device that is literally used to measure (changes in) heat.
+In reality, most calorimeters are designed to minimize the transfer of heat between the system (inside) and the
+surroundings (outside), thereby ensuring accurate measurements of the internal changes of heat in the system.
+The confusion dates back to the caloric theory, in which heat was thought to be a property of materials rather
+than a transfer associated with the process by which a material undergoes a change of state. There are three
+basic types of calorimeters: adiabatic—in which the transfer of heat between system and surroundings is
+prevented; isoperibol—in which a small controlled heat exchange is permitted; and isothermal—in which
+either work or heat may be used to maintain constant temperature within the system. Essentially,
+these devices are measuring a heat equivalent for a change of the (thermodynamic) state of the
+system.
+</p> 
+<p>   This web-based experiment utilizes a commercial calorimeter of the isoperibol type, the Parr Oxygen
+Bomb Combustion Calorimeter (schematic shown on the right). A sample (up to a gram or two)
+is contained under a pressure (~30 atm) of pure oxygen in a sturdy stainless steel bomb (A, ~1
+liter) which is immersed in ~2 liters of water (B) in a metal bucket (C). The apparatus contains a
+thermometer (or thermocouple, D) to measure the temperature of the water and a stirrer (E)
+to ensure the temperature is uniform throughout the system. The calorimeter is furthermore
+insulated from the surroundings by two air spaces (F) and a non-conducting shell (G, insulated
+container).
+</p> 
+<p>   The unit is assembled with the temperature of the water slightly below room temperature, and a slight
+positive slope is observed in a graph of temperature vs time. When the sample is ignited, the temperature
+within the bomb increases, then the temperatures of the water and the bucket increase until all are at the same
+temperature, usually slightly above room temperature. The temperature usually goes through a maximum,
+then a slightly negative slope is observed in the temperature vs time graph. In the adiabatic version of this
+calorimeter, hot and cold water are circulated through the outer jacket to match its temperature to that of the
+water in the bucket, thereby preventing the transfer of heat to or from the bucket. The temperature
+vs time graph is horizontal before ignition, and again after the temperature increase has been
+observed.
+</p> 
+<p>   The temperature-time lines (A,B) are extrapolated to a common point in time. (These lines are parallel for
+the adiabatic apparatus, but <em><span class='fbb-Italic-tlf-t1-x-x-120'>not</span></em> for the isoperibol apparatus.) <em><strong><span class='fbb-BoldItalic-tlf-t1-x-x-120'>A vertical line is selected which will make the
+two shaded areas in the graph approximately equal.</span></strong></em> The temperature change for the experiment
+(<!-- l. 57 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><mi>T</mi></mrow></math>) is
+calculated from the final and initial temperatures on this line. The process is considered to take place
+                                                                                                  
+                                                                                                  
+instantaneously along the vertical line. The shaded areas (one positive, one negative) are considered to be
+proportional to the heat leak out of the system and into the surroundings. Making these areas equal is assumed
+to nullify contribution of heat leak, making the observed temperature change the same as would be observed
+in an adiabatic process. The average temperature of the measurement is taken to be the temperature at the
+crossover point (C) between these areas.
+   </p> 
+
+<div class='center'>
+<p>
+</p> 
+<p><img alt='PIC' height='358' src='figures/bombcal_temp_time.png' width='358' /></p> 
+</div>
+   <h3 class='likesectionHead'><a id='x1-1000'></a>Thermodynamic Analysis</h3>
+<p>The system (bucket, water, bomb, sample, and oxygen) is assumed to be at initial temperature,
+<!-- l. 66 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub></math>, and
+pressure, <!-- l. 66 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub></math>.
+The sample is ignited and the temperature of the system increases to a final temperature,
+<!-- l. 66 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><msub><mrow><mi>T</mi></mrow><mrow><mi>f</mi></mrow></msub><mo class='MathClass-punc'>,</mo></mrow></math> at pressure
+<!-- l. 66 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub></math>. The
+bomb and its contents undergo no change in volume, but there is a very slight expansion of the water in the
+bucket due to the change of temperature. There is zero heat for this (pseudo) adiabatic process. There are two
+negligible increments of work—that due to the expansion of the water against the atmosphere (which will
+be compensated later), and that due to the electrical current used to heat the fuse wire that is
+used to ignite the sample. It is then possible to calculate the heat (Q) that must be transferred in
+order to cool the system (bucket, water, bomb, reaction products, unburned oxygen) back to
+<!-- l. 66 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub></math>. The amount
+of heat that needs to be absorbed to achieve this cooling is calculated as the heat capacity equivalent of the system
+(<!-- l. 66 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub></math>) multiplied by the
+change in temperature: <!-- l. 66 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>Q</mi> <mo class='MathClass-rel'>=</mo> <msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub> <mo class='MathClass-bin'>−</mo> <msub><mrow><mi>T</mi></mrow><mrow><mi>f</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-bin'>−</mo><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>f</mi></mrow></msub> <mo class='MathClass-bin'>−</mo> <msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-bin'>−</mo><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub><mi mathvariant='normal'>Δ</mi><mi>T</mi></mrow></math>.
+</p> 
+<p>   The heat capacity of the system might be determined in several different ways, but the most common
+method is to measure the temperature change for the combustion of a standard reference material (usually
+benzoic acid). <!-- tex4ht:inline --></p> 
+<table class='equation'><tr><td>
+<!-- l. 70 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                     <mstyle class='label' id='x1-1001r1'></mstyle><!-- endlabel --> <mo class='MathClass-bin'>−</mo> <mi>Q</mi><mspace class='thinspace' width='0.22em'></mspace><mo class='MathClass-open' stretchy='false'>(</mo><mi mathvariant='italic'>Joules</mi><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-rel'>=</mo> <mn>26425</mn><mspace class='thickpace' width='0.28em'></mspace><mi mathvariant='italic'>Weigh</mi><msub><mrow><mi>t</mi></mrow><mrow><mi mathvariant='italic'>benzoic</mi><mspace class='thinspace' width='0.22em'></mspace><mi mathvariant='italic'>acid</mi></mrow></msub> <mo class='MathClass-bin'>+</mo> <mn>5858</mn><mspace class='thickpace' width='0.28em'></mspace><mi mathvariant='normal'>Δ</mi><mi mathvariant='italic'>Weigh</mi><msub><mrow><mi>t</mi></mrow><mrow><mi mathvariant='italic'>iron</mi></mrow></msub>
+</mrow></math></td><td class='eq-no'>(1)</td></tr></table>
+<p>
+</p> 
+<p>This net process may now be considered as: <!-- tex4ht:inline --></p> 
+<table class='equation'><tr><td>
+                                                                                                  
+                                                                                                  
+<!-- l. 76 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                <mstyle class='label' id='x1-1002r2'></mstyle><!-- endlabel --><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>[Sample + Required Oxygen]</mtext></mstyle><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msub><mrow><mi>V</mi> </mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo><mo class='MathClass-bin'>−</mo> <mo class='MathClass-rel'>&gt;</mo> <mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>[Products]</mtext></mstyle><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msub><mrow><mi>V</mi> </mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msup><mrow><mi>P</mi></mrow><mrow><mi>′</mi></mrow></msup><mo class='MathClass-close' stretchy='false'>)</mo>
+</mrow></math></td><td class='eq-no'>(2)</td></tr></table>
+<p>
+</p> 
+<p>with the remainder of the system (bucket, water, bomb) undergoing no change. Since this change involves no
+work, <!-- tex4ht:inline --></p> 
+<table class='equation'><tr><td>
+<!-- l. 82 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                                      <mstyle class='label' id='x1-1003r3'></mstyle><!-- endlabel --><mi mathvariant='normal'>Δ</mi><msub><mrow><mi>U</mi></mrow><mrow><mi mathvariant='italic'>vol</mi></mrow></msub> <mo class='MathClass-rel'>=</mo> <mi>Q</mi> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-bin'>−</mo><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub><mi mathvariant='normal'>Δ</mi><mi>T</mi>
+</mrow></math></td><td class='eq-no'>(3)</td></tr></table>
+<p>
+</p> 
+<p>   The difference between <!-- l. 86 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub></math>
+and <!-- l. 86 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow><mi>P</mi></mrow><mrow><mi>′</mi></mrow></msup></math> is
+usually small, and the derivative of energy with respect to pressure at constant temperature is also small for most
+materials (zero for an ideal gas), so the energy change for taking the products back to the initial temperature and
+pressure (<!-- l. 86 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub></math>,
+<!-- l. 86 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub></math>) and some new
+volume (<!-- l. 86 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow><mi>V</mi> </mrow><mrow><mi>′</mi></mrow></msup></math>) is considered
+negligible. (An accurate value can be calculated if an extremely precise measurement is required.) The energy change per
+mole of sample (<!-- l. 86 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><mi>Ū</mi></mrow></math>)
+for the process <!-- l. 86 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mo class='MathClass-open' stretchy='false'>[</mo><mi mathvariant='italic'>Sample</mi> <mo class='MathClass-bin'>+</mo> <mi mathvariant='italic'>Required</mi><mspace class='thinspace' width='0.22em'></mspace><mi mathvariant='italic'>Oxygen</mi><mo class='MathClass-close' stretchy='false'>]</mo><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msub><mrow><mi>V</mi> </mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo> <mo class='MathClass-rel'>→</mo> <mo class='MathClass-open' stretchy='false'>[</mo><mi mathvariant='italic'>Products</mi><mo class='MathClass-close' stretchy='false'>]</mo><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-punc'>,</mo><msup><mrow><mi>V</mi> </mrow><mrow><mi>′</mi></mrow></msup><mo class='MathClass-close' stretchy='false'>)</mo></mrow></math>
+is then <!-- tex4ht:inline --></p> 
+<table class='equation'><tr><td>
+<!-- l. 88 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                                  <mstyle class='label' id='x1-1004r4'></mstyle><!-- endlabel --><mi mathvariant='normal'>Δ</mi><mi>Ū</mi> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-bin'>−</mo><sup class='nicefrac'><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub><mi mathvariant='normal'>Δ</mi><mi>T</mi> <mo class='MathClass-bin'>−</mo> <msub><mrow><mi>q</mi></mrow><mrow><mi mathvariant='italic'>corr</mi></mrow></msub></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><msub><mrow><mi>n</mi></mrow><mrow><mi mathvariant='italic'>sample</mi></mrow></msub></sub>
+</mrow></math></td><td class='eq-no'>(4)</td></tr></table>
+<p>
+                                                                                                  
+                                                                                                  
+</p> 
+<p>with a small correction for combustion of the fuse wire:
+<!-- l. 92 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><msub><mrow><mi>q</mi></mrow><mrow><mi mathvariant='italic'>corr</mi></mrow></msub> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-open' stretchy='false'>(</mo><mn>5858</mn><mspace class='thinspace' width='0.17em'></mspace><mi>J</mi><mo class='MathClass-bin'>∕</mo><mi>g</mi><mo class='MathClass-close' stretchy='false'>)</mo><mi mathvariant='normal'>Δ</mi><msub><mrow><mstyle class='mbox'><mtext class='textrm' mathvariant='normal'>Weight</mtext></mstyle></mrow><mrow><mi mathvariant='italic'>iron</mi></mrow></msub></mrow></math>,
+where the weight of the iron is measured in grams and the conversion factor
+<!-- l. 92 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mn>5858</mn><mspace class='thinspace' width='0.17em'></mspace><mi>J</mi><mo class='MathClass-bin'>∕</mo><mi>g</mi></mrow></math> is the
+energy equivalent for iron wire.
+</p> 
+<p>   The molar enthalpy change (<!-- l. 94 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><mover accent='true'><mrow><mi>H</mi></mrow><mo accent='true'>¯</mo></mover></mrow></math>)
+for this reaction is [<!-- l. 94 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><mi>H</mi> <mo class='MathClass-rel'>=</mo> <mi mathvariant='normal'>Δ</mi><mi>U</mi> <mo class='MathClass-bin'>+</mo> <mi mathvariant='normal'>Δ</mi><mo class='MathClass-open' stretchy='false'>(</mo><mi mathvariant='italic'>PV</mi> <mo class='MathClass-close' stretchy='false'>)</mo></mrow></math>],
+<!-- tex4ht:inline --></p> 
+<table class='equation'><tr><td>
+<!-- l. 96 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                                <mstyle class='label' id='x1-1005r5'></mstyle><!-- endlabel --><mi mathvariant='normal'>Δ</mi><mover accent='true'><mrow><mi>H</mi></mrow><mo accent='true'>¯</mo></mover> <mo class='MathClass-rel'>=</mo><sup class='nicefrac'> <mo class='MathClass-open' stretchy='false'>(</mo><mi mathvariant='normal'>Δ</mi><mi>Ū</mi> <mo class='MathClass-bin'>+</mo> <msub><mrow><mi>P</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-open' stretchy='false'>(</mo><msup><mrow><mi>V</mi> </mrow><mrow><mi>′</mi></mrow></msup><mo class='MathClass-bin'>−</mo> <msub><mrow><mi>V</mi> </mrow><mrow>
+<mi>i</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><msub><mrow><mi>n</mi></mrow><mrow><mi mathvariant='italic'>sample</mi></mrow></msub></sub>
+</mrow></math></td><td class='eq-no'>(5)</td></tr></table>
+<p>
+</p> 
+<p>and is calculated as the observed enthalpy of reaction:
+   </p> 
+<table class='equation'><tr><td>
+<!-- l. 102 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
+                           <mstyle class='label' id='x1-1006r6'></mstyle><!-- endlabel --><mi mathvariant='normal'>Δ</mi><mover accent='true'><mrow><mi>H</mi></mrow><mo accent='true'>¯</mo></mover> <mo class='MathClass-rel'>=</mo> <mo class='MathClass-bin'>−</mo><sup class='nicefrac'><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>C</mi></mrow><mrow><mi mathvariant='italic'>eq</mi></mrow></msub><mi mathvariant='normal'>Δ</mi><mi>T</mi> <mo class='MathClass-bin'>−</mo> <msub><mrow><mi>q</mi></mrow><mrow><mi mathvariant='italic'>corr</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo></sup><mo class='MathClass-bin'>∕</mo><sub class='nicefrac'><msub><mrow><mi>n</mi></mrow><mrow><mi mathvariant='italic'>sample</mi></mrow></msub></sub> <mo class='MathClass-bin'>+</mo> <mi mathvariant='italic'>RT</mi><mi mathvariant='normal'>Δ</mi><msub><mrow><mi>N</mi></mrow><mrow><mi mathvariant='italic'>gas</mi></mrow></msub>
+</mrow></math></td><td class='eq-no'>(6)</td></tr></table>
+<p>
+</p> 
+<p>in which <!-- l. 106 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='normal'>Δ</mi><msub><mrow><mi>N</mi></mrow><mrow><mi mathvariant='italic'>gas</mi></mrow></msub></mrow></math> is
+the difference in the number of moles of gaseous products and reactants per mole of sample reacted (calculated
+from the balanced reaction for the combustion process).
+</p> 
+<p>   This enthalpy change is for the reaction at the experimental temperature (the average temperature calculated
+using the equal-area method, as depicted in Fig. 2) and pressure (about 30 atm). For very precise work, this value is
+adjusted to the standard state conditions (1 atm) with the properties of the materials involved. The correction is
+normally small and for this work it is assumed that the observed enthalpy is the standard heat of reaction
+(<!-- l. 108 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><msub><mrow><mi mathvariant='normal'>Δ</mi></mrow><mrow><mi mathvariant='italic'>rxn</mi></mrow></msub><msub><mrow><mi>H</mi></mrow><mrow><mi>o</mi></mrow></msub></mrow></math>). This value is
+combined with the standard heats of formation of the products (usually water and carbon dioxide) to obtain the standard
+heat of formation (<!-- l. 108 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><msub><mrow><mi mathvariant='normal'>Δ</mi></mrow><mrow><mi>f</mi></mrow></msub><msub><mrow><mi>H</mi></mrow><mrow><mi>o</mi></mrow></msub></mrow></math>)
+of the sample.
+                                                                                                  
+                                                                                                  
+</p> 
+<p>
+   </p> 
+
+   <h3 class='likesectionHead'><a id='x1-2000'></a>References</h3>
+<p>
+     </p> 
+<div class='thebibliography'>
+     <p class='bibitem'><span class='biblabel'>
+  [1]<span class='bibsp'>   </span></span><a id='Xweb1'></a><a class='url' href='https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/'><span class='ectt-1200'>https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/</span></a></p></div>
     
-    <div
-    style="
-      font-family: Minion Pro, Baskerville, Garamond, EB Garamond, Georgia,
-        serif;
-      font-size: 18px;
-      line-height: 1.5;
-      max-width: 40em;
-      margin: auto;
-    "
-  >
-    <div class="maketitle">
-      <h2 class="titleHead">Bomb Calorimetry Simulation – Discussion</h2>
-      <div class="author"><a href="Bomb_Calorimetry_Simulator___Discussion.pdf">View Discussion as Downloadable PDF</a></div>
-      <br />
-      <div class="date"></div>
-    </div>
-    <div class="wrapfig-r">
-      <div class="center">
-        <p></p>
-        <p>
-          <img
-            alt="PIC"
-            height="174"
-            src="figures/BombCal_Diagram.png"
-            width="174"
-          />
-        </p>
-      </div>
-    </div>
-    <p>
-      A calorimeter (calor = heat + metron = measure) should be literally a
-      device to measure heat. In reality, most calorimeters are designed to
-      minimize the transfer of heat between the system (inside) and the
-      surroundings (outside). The confusion dates back to the caloric theory, in
-      which heat was thought to be a property of materials rather than a
-      transfer associated with the process by which a material undergoes a
-      change of state. There are three basic types of calorimeters: adiabatic -
-      in which the transfer of heat between system and surroundings is
-      prevented, isoperibol - in which a small controlled heat exchange is
-      permitted, and isothermal - in which either work or heat may be used to
-      maintain constant temperature within the system. Essentially, these
-      devices are measuring a heat equivalent for a change of state of the
-      system.
-    </p>
-    <p>
-      This experiment utilizes a commercial calorimeter of the isoperibol type,
-      the Parr Oxygen Bomb Combustion Calorimeter (schematic shown on the
-      right). A sample (up to a gram or two) is contained under a pressure (~30
-      atm) of pure oxygen in a sturdy stainless steel bomb (A, ~1 liter) which
-      is immersed in ~2 liters of water (B) in a metal bucket (C). The apparatus
-      contains a thermometer (D, or thermocouple) to measure the temperature of
-      the water and a stirrer (E) to insure uniform temperature throughout the
-      system, and is insulated from the surroundings by two air spaces (F) and a
-      non-conducting shell (G, insulated container).
-    </p>
-    <p>
-      The unit is assembled with the temperature of the water slightly below
-      room temperature, and a slight positive slope is observed in a graph of
-      temperature vs time. When the sample is ignited, the temperature within
-      the bomb increases, then the temperatures of the water and the bucket
-      increase until all are at the same temperature, usually slightly above
-      room temperature. The temperature usually goes through a maximum, then a
-      slightly negative slope is observed in the temperature vs time graph. In
-      the adiabatic version of this calorimeter, hot and cold water are
-      circulated through the outer jacket to match its temperature to that of
-      the water in the bucket, thereby preventing the transfer of heat to or
-      from the bucket. The temperature vs time graph is horizontal before
-      ignition, and again after the temperature increase has been observed.
-    </p>
-    <p>
-      The temperature-time lines (A,B) are extrapolated to a common point in
-      time. [These lines are parallel for the adiabatic apparatus, but not for
-      the isoperibol apparatus]
-      <em
-        ><strong
-          ><span class="fbb-BoldItalic-tlf-t1-x-x-120"
-            >A vertical line is selected which will make the two shaded areas in
-            the graph approximately equal.</span
-          ></strong
-        ></em
-      >
-      The temperature change for the experiment (<!-- l. 57 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow><mi mathvariant="normal">Δ</mi><mi>T</mi></mrow></math
-      >) is calculated from the final and initial temperatures on this line. The
-      process is considered to take place instantaneously along the vertical
-      line. The shaded areas (one positive, one negative) are considered to be
-      proportional to the heat leak. Making these areas equal is assumed to
-      nullify the heat leak, making the observed temperature change the same as
-      would be observed in an adiabatic process. The average temperature of the
-      measurement is taken as the temperature at the crossover point (C) between
-      these areas.
-    </p>
-
-    <div class="center">
-      <p></p>
-      <p>
-        <img
-          alt="PIC"
-          height="358"
-          src="figures/bombcal_temp_time.png"
-          width="358"
-        />
-      </p>
-    </div>
-    <h3 class="likesectionHead"><a id="x1-1000"></a>Thermodynamic Analysis</h3>
-    <p>
-      The system (bucket, water, bomb, sample, oxygen) is assumed to be at
-      inital temperature,
-      <!-- l. 66 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>T</mi></mrow
-          ><mrow><mi>i</mi></mrow></msub
-        ></math
-      >, and pressure,
-      <!-- l. 66 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>P</mi></mrow
-          ><mrow><mi>i</mi></mrow></msub
-        ></math
-      >). The sample is ignited and the temperature of the system increases to
-      <!-- l. 66 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>T</mi></mrow
-          ><mrow><mi>f</mi></mrow></msub
-        ></math
-      >
-      at pressure
-      <!-- l. 66 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>P</mi></mrow
-          ><mrow><mi>i</mi></mrow></msub
-        ></math
-      >. The bomb and its contents undergo no change in volume, but there is a
-      very slight expansion of the water in the bucket due to the change of
-      temperature. There is zero heat for this (pseudo) adiabatic process. There
-      are two negligible increments of work - that due to the expansion of the
-      water against the atmosphere (which will be compensated later), and that
-      due to the electrical current used to heat the fuse wire which ignites the
-      sample. It is then possible to calculate the heat (Q) that must be
-      transferred in order to cool the system (bucket, water, bomb, reaction
-      products, unburned oxygen) back to
-      <!-- l. 66 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>T</mi></mrow
-          ><mrow><mi>i</mi></mrow></msub
-        ></math
-      >. The heat for this cooling is calculated as the heat capacity equivalent
-      of the system (<!-- l. 66 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>C</mi></mrow
-          ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-        ></math
-      >) multiplied by the change in temperature:
-      <!-- l. 66 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><mi>Q</mi> <mo class="MathClass-rel">=</mo>
-          <msub
-            ><mrow><mi>C</mi></mrow
-            ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-          ><mo class="MathClass-open" stretchy="false">(</mo
-          ><msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          >
-          <mo class="MathClass-bin">−</mo>
-          <msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>f</mi></mrow></msub
-          ><mo class="MathClass-close" stretchy="false">)</mo>
-          <mo class="MathClass-rel">=</mo> <mo class="MathClass-bin">−</mo
-          ><msub
-            ><mrow><mi>C</mi></mrow
-            ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-          ><mo class="MathClass-open" stretchy="false">(</mo
-          ><msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>f</mi></mrow></msub
-          >
-          <mo class="MathClass-bin">−</mo>
-          <msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-close" stretchy="false">)</mo>
-          <mo class="MathClass-rel">=</mo> <mo class="MathClass-bin">−</mo
-          ><msub
-            ><mrow><mi>C</mi></mrow
-            ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-          ><mi mathvariant="normal">Δ</mi><mi>T</mi></mrow
-        ></math
-      >
-    </p>
-    <p>
-      The heat capacity of the system might be determined in several ways, but
-      the most common method is to measure the temperature change for the
-      combustion of a standard material (usually benzoic acid).
-    </p>
-    <table class="equation">
-      <tr>
-        <td>
-          <!-- l. 70 --><math
-            class="equation"
-            display="block"
-            xmlns="http://www.w3.org/1998/Math/MathML"
-            ><mrow>
-              <mstyle class="label" id="x1-1001r1"></mstyle
-              ><!-- endlabel -->
-              <mo class="MathClass-bin">−</mo> <mi>Q</mi
-              ><mspace class="thinspace" width="0.22em"></mspace
-              ><mo class="MathClass-open" stretchy="false">(</mo
-              ><mi mathvariant="italic">Joules</mi
-              ><mo class="MathClass-close" stretchy="false">)</mo>
-              <mo class="MathClass-rel">=</mo> <mn>26425</mn
-              ><mspace class="thickpace" width="0.28em"></mspace
-              ><mi mathvariant="italic">Weigh</mi
-              ><msub
-                ><mrow><mi>t</mi></mrow
-                ><mrow
-                  ><mi mathvariant="italic">benzoic</mi
-                  ><mspace class="thinspace" width="0.22em"></mspace
-                  ><mi mathvariant="italic">acid</mi></mrow
-                ></msub
-              >
-              <mo class="MathClass-bin">+</mo> <mn>5858</mn
-              ><mspace class="thickpace" width="0.28em"></mspace
-              ><mi mathvariant="normal">Δ</mi><mi mathvariant="italic">Weigh</mi
-              ><msub
-                ><mrow><mi>t</mi></mrow
-                ><mrow><mi mathvariant="italic">iron</mi></mrow></msub
-              >
-            </mrow></math
-          >
-        </td>
-        <td class="eq-no">(1)</td>
-      </tr>
-    </table>
-    <p></p>
-    <p>This net process may now be considered as:</p>
-    <p>
-      <!-- l. 76 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><mo class="MathClass-open" stretchy="false">[</mo
-          ><mi mathvariant="italic">Sample</mi>
-          <mo class="MathClass-bin">+</mo> <mi mathvariant="italic">Required</mi
-          ><mspace class="thinspace" width="0.22em"></mspace
-          ><mi mathvariant="italic">Oxygen</mi
-          ><mo class="MathClass-close" stretchy="false">]</mo
-          ><mo class="MathClass-open" stretchy="false">(</mo
-          ><msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msub
-            ><mrow><mi>V</mi> </mrow><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msub
-            ><mrow><mi>P</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-close" stretchy="false">)</mo
-          ><mo class="MathClass-bin">−</mo> <mo class="MathClass-rel">&gt;</mo>
-          <mo class="MathClass-open" stretchy="false">[</mo
-          ><mi mathvariant="italic">Products</mi
-          ><mo class="MathClass-close" stretchy="false">]</mo
-          ><mo class="MathClass-open" stretchy="false">(</mo
-          ><msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msub
-            ><mrow><mi>V</mi> </mrow><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msup
-            ><mrow><mi>P</mi></mrow
-            ><mrow><mi>′</mi></mrow></msup
-          ><mo class="MathClass-close" stretchy="false">)</mo></mrow
-        ></math
-      >
-    </p>
-    <p>
-      with the remainder of the system (bucket, water, bomb) undergoing no
-      change. Since this change involves no work,
-    </p>
-    <table class="equation">
-      <tr>
-        <td>
-          <!-- l. 80 --><math
-            class="equation"
-            display="block"
-            xmlns="http://www.w3.org/1998/Math/MathML"
-            ><mrow>
-              <mstyle class="label" id="x1-1002r2"></mstyle
-              ><!-- endlabel --><mi mathvariant="normal">Δ</mi
-              ><msub
-                ><mrow><mi>U</mi></mrow
-                ><mrow><mi mathvariant="italic">vol</mi></mrow></msub
-              >
-              <mo class="MathClass-rel">=</mo> <mi>Q</mi>
-              <mo class="MathClass-rel">=</mo> <mo class="MathClass-bin">−</mo
-              ><msub
-                ><mrow><mi>C</mi></mrow
-                ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-              ><mi mathvariant="normal">Δ</mi><mi>T</mi>
-            </mrow></math
-          >
-        </td>
-        <td class="eq-no">(2)</td>
-      </tr>
-    </table>
-    <p></p>
-    <p>
-      The difference between
-      <!-- l. 84 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>P</mi></mrow
-          ><mrow><mi>i</mi></mrow></msub
-        ></math
-      >
-      and
-      <!-- l. 84 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msup
-          ><mrow><mi>P</mi></mrow
-          ><mrow><mi>′</mi></mrow></msup
-        ></math
-      >
-      is usually small, and the derivative of energy with respect to pressure at
-      constant temperature is also small for most materials (zero for an ideal
-      gas), so the energy change for taking the products back to
-      <!-- l. 84 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>P</mi></mrow
-          ><mrow><mi>i</mi></mrow></msub
-        ></math
-      >,
-      <!-- l. 84 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msub
-          ><mrow><mi>T</mi></mrow
-          ><mrow><mi>i</mi></mrow></msub
-        ></math
-      >, and some new volume (<!-- l. 84 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><msup
-          ><mrow><mi>V</mi> </mrow><mrow><mi>′</mi></mrow></msup
-        ></math
-      >) is considered negligible (an accurate value can be calculated for
-      extremely precise work). The energy change per mole of sample (<!-- l. 84 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow><mi mathvariant="normal">Δ</mi><mi>Ū</mi></mrow></math
-      >) for the process
-      <!-- l. 84 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><mo class="MathClass-open" stretchy="false">[</mo
-          ><mi mathvariant="italic">Sample</mi>
-          <mo class="MathClass-bin">+</mo> <mi mathvariant="italic">Required</mi
-          ><mspace class="thinspace" width="0.22em"></mspace
-          ><mi mathvariant="italic">Oxygen</mi
-          ><mo class="MathClass-close" stretchy="false">]</mo
-          ><mo class="MathClass-open" stretchy="false">(</mo
-          ><msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msub
-            ><mrow><mi>V</mi> </mrow><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msub
-            ><mrow><mi>P</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-close" stretchy="false">)</mo>
-          <mo class="MathClass-rel">→</mo>
-          <mo class="MathClass-open" stretchy="false">[</mo
-          ><mi mathvariant="italic">Products</mi
-          ><mo class="MathClass-close" stretchy="false">]</mo
-          ><mo class="MathClass-open" stretchy="false">(</mo
-          ><msub
-            ><mrow><mi>T</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msub
-            ><mrow><mi>P</mi></mrow
-            ><mrow><mi>i</mi></mrow></msub
-          ><mo class="MathClass-punc">,</mo
-          ><msup
-            ><mrow><mi>V</mi> </mrow><mrow><mi>′</mi></mrow></msup
-          ><mo class="MathClass-close" stretchy="false">)</mo></mrow
-        ></math
-      >
-      is then
-    </p>
-    <table class="equation">
-      <tr>
-        <td>
-          <!-- l. 86 --><math
-            class="equation"
-            display="block"
-            xmlns="http://www.w3.org/1998/Math/MathML"
-            ><mrow>
-              <mstyle class="label" id="x1-1003r3"></mstyle
-              ><!-- endlabel --><mi mathvariant="normal">Δ</mi><mi>Ū</mi>
-              <mo class="MathClass-rel">=</mo> <mo class="MathClass-bin">−</mo
-              ><sup class="nicefrac"
-                ><mo class="MathClass-open" stretchy="false">(</mo
-                ><msub
-                  ><mrow><mi>C</mi></mrow
-                  ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-                ><mi mathvariant="normal">Δ</mi><mi>T</mi>
-                <mo class="MathClass-bin">−</mo>
-                <msub
-                  ><mrow><mi>q</mi></mrow
-                  ><mrow><mi mathvariant="italic">corr</mi></mrow></msub
-                ></sup
-              ><mo class="MathClass-bin">∕</mo
-              ><sub class="nicefrac"
-                ><msub
-                  ><mrow><mi>n</mi></mrow
-                  ><mrow><mi mathvariant="italic">sample</mi></mrow></msub
-                ></sub
-              >
-            </mrow></math
-          >
-        </td>
-        <td class="eq-no">(3)</td>
-      </tr>
-    </table>
-    <p></p>
-    <p>
-      with a small correction for combustion of the fuse wire: (<!-- l. 90 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><msub
-            ><mrow><mi>q</mi></mrow
-            ><mrow><mi mathvariant="italic">corr</mi></mrow></msub
-          >
-          <mo class="MathClass-rel">=</mo> <mn>5858</mn
-          ><mi mathvariant="normal">Δ</mi><mi mathvariant="italic">Weigh</mi
-          ><msub
-            ><mrow><mi>t</mi></mrow
-            ><mrow><mi mathvariant="italic">iron</mi></mrow></msub
-          ></mrow
-        ></math
-      >).
-    </p>
-    <p>
-      The molar enthalpy change (<!-- l. 92 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><mi mathvariant="normal">Δ</mi
-          ><mover accent="true"
-            ><mrow><mi>H</mi></mrow
-            ><mo accent="true">¯</mo></mover
-          ></mrow
-        ></math
-      >) for this reaction is [<!-- l. 92 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><mi mathvariant="normal">Δ</mi><mi>H</mi>
-          <mo class="MathClass-rel">=</mo> <mi mathvariant="normal">Δ</mi
-          ><mi>U</mi> <mo class="MathClass-bin">+</mo>
-          <mi mathvariant="normal">Δ</mi
-          ><mo class="MathClass-open" stretchy="false">(</mo
-          ><mi mathvariant="italic">PV</mi>
-          <mo class="MathClass-close" stretchy="false">)</mo></mrow
-        ></math
-      >],
-    </p>
-    <table class="equation">
-      <tr>
-        <td>
-          <!-- l. 94 --><math
-            class="equation"
-            display="block"
-            xmlns="http://www.w3.org/1998/Math/MathML"
-            ><mrow>
-              <mstyle class="label" id="x1-1004r4"></mstyle
-              ><!-- endlabel --><mi mathvariant="normal">Δ</mi
-              ><mover accent="true"
-                ><mrow><mi>H</mi></mrow
-                ><mo accent="true">¯</mo></mover
-              >
-              <mo class="MathClass-rel">=</mo
-              ><sup class="nicefrac">
-                <mo class="MathClass-open" stretchy="false">(</mo
-                ><mi mathvariant="normal">Δ</mi><mi>Ū</mi>
-                <mo class="MathClass-bin">+</mo>
-                <msub
-                  ><mrow><mi>P</mi></mrow
-                  ><mrow><mi>i</mi></mrow></msub
-                ><mo class="MathClass-open" stretchy="false">(</mo
-                ><msup
-                  ><mrow><mi>V</mi> </mrow><mrow><mi>′</mi></mrow></msup
-                ><mo class="MathClass-bin">−</mo>
-                <msub
-                  ><mrow><mi>V</mi> </mrow><mrow> <mi>i</mi></mrow></msub
-                ><mo class="MathClass-close" stretchy="false">)</mo></sup
-              ><mo class="MathClass-bin">∕</mo
-              ><sub class="nicefrac"
-                ><msub
-                  ><mrow><mi>n</mi></mrow
-                  ><mrow><mi mathvariant="italic">sample</mi></mrow></msub
-                ></sub
-              >
-            </mrow></math
-          >
-        </td>
-        <td class="eq-no">(4)</td>
-      </tr>
-    </table>
-
-    <p></p>
-    <p>and is calculated as the observed enthalpy of reaction:</p>
-    <table class="equation">
-      <tr>
-        <td>
-          <!-- l. 100 --><math
-            class="equation"
-            display="block"
-            xmlns="http://www.w3.org/1998/Math/MathML"
-            ><mrow>
-              <mstyle class="label" id="x1-1005r5"></mstyle
-              ><!-- endlabel --><mi mathvariant="normal">Δ</mi
-              ><mover accent="true"
-                ><mrow><mi>H</mi></mrow
-                ><mo accent="true">¯</mo></mover
-              >
-              <mo class="MathClass-rel">=</mo> <mo class="MathClass-bin">−</mo
-              ><sup class="nicefrac"
-                ><mo class="MathClass-open" stretchy="false">(</mo
-                ><msub
-                  ><mrow><mi>C</mi></mrow
-                  ><mrow><mi mathvariant="italic">eq</mi></mrow></msub
-                ><mi mathvariant="normal">Δ</mi><mi>T</mi>
-                <mo class="MathClass-bin">−</mo>
-                <msub
-                  ><mrow><mi>q</mi></mrow
-                  ><mrow><mi mathvariant="italic">corr</mi></mrow></msub
-                ><mo class="MathClass-close" stretchy="false">)</mo></sup
-              ><mo class="MathClass-bin">∕</mo
-              ><sub class="nicefrac"
-                ><msub
-                  ><mrow><mi>n</mi></mrow
-                  ><mrow><mi mathvariant="italic">sample</mi></mrow></msub
-                ></sub
-              >
-              <mo class="MathClass-bin">+</mo> <mi mathvariant="italic">RT</mi
-              ><mi mathvariant="normal">Δ</mi
-              ><msub
-                ><mrow><mi>N</mi></mrow
-                ><mrow><mi mathvariant="italic">gas</mi></mrow></msub
-              >
-            </mrow></math
-          >
-        </td>
-        <td class="eq-no">(5)</td>
-      </tr>
-    </table>
-    <p></p>
-    <p>
-      in which
-      <!-- l. 104 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><mi mathvariant="normal">Δ</mi
-          ><msub
-            ><mrow><mi>N</mi></mrow
-            ><mrow><mi mathvariant="italic">gas</mi></mrow></msub
-          ></mrow
-        ></math
-      >
-      is the difference in the number of moles of gaseous products and reactants
-      per mole of sample reacted (calculated from the balanced reaction for the
-      combustion process).
-    </p>
-    <p>
-      This enthalpy change is for the reaction at the experimental temperature
-      (the average temperature from Fig. 2) and pressure (about 30 atm). For
-      very precise work, this value is adjusted to the standard state conditions
-      (1 atm) with the properties of the materials involved. The correction is
-      normally small, and for this work it is assumed that the observed enthalpy
-      is the standard heat of reaction (<!-- l. 106 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><msub
-            ><mrow><mi mathvariant="normal">Δ</mi></mrow
-            ><mrow><mi mathvariant="italic">rxn</mi></mrow></msub
-          ><msub
-            ><mrow><mi>H</mi></mrow
-            ><mrow><mi>o</mi></mrow></msub
-          ></mrow
-        ></math
-      >). This value is combined with the standard heats of formation of the
-      products (usually water and carbon dioxide) to obtain the standard heat of
-      formation (<!-- l. 106 --><math
-        display="inline"
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        ><mrow
-          ><msub
-            ><mrow><mi mathvariant="normal">Δ</mi></mrow
-            ><mrow><mi>f</mi></mrow></msub
-          ><msub
-            ><mrow><mi>H</mi></mrow
-            ><mrow><mi>o</mi></mrow></msub
-          ></mrow
-        ></math
-      >) of the sample.
-    </p>
-    <p></p>
-
-    <h3 class="likesectionHead"><a id="x1-2000"></a>References</h3>
-    <p></p>
-    <div class="thebibliography">
-      <p class="bibitem">
-        <span class="biblabel"> [1]<span class="bibsp"> </span></span
-        ><a id="Xweb1"></a
-        ><a
-          class="url"
-          href="https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/"
-          ><span class="ectt-1200"
-            >https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/</span
-          ></a
-        >
-      </p>
-    </div>
-  </div>
+</body> 
+</html>
