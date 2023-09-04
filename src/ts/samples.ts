@@ -110,7 +110,7 @@ export const Samples = [
     sFormula: "C14H10O2",
   },
   {
-    sName: "Diphenyl",
+    sName: "Biphenyl",
     sC: "12",
     sH: "10",
     sO: "0",
@@ -178,5 +178,55 @@ export const Samples = [
     sM: "342.241",
     sE: "16482",
     sFormula: "C12H22O11",
+  },
+  {
+    sName: "Unknown 1", // Acetylsalicylic Acid (aspirin)
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "?", // 180.15742 g/mol
+    sE: "21795", // -3926.71 kJ/mol
+    sFormula: "Unknown",
+  },
+  {
+    sName: "Unknown 2", // Crystalline Azulene
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "?", // 128.174 g/mol
+    sE: "41277", // -1264.5 kcal/mol
+    sFormula: "Unknown",
+  },
+  {
+    sName: "Unknown 3", // 1-Butanol
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "?", // 74.12 g/mol
+    sE: "36063", // -2673 kJ/mol
+    sFormula: "Unknown",
+  },
+  {
+    sName: "Unknown 4", // 2-Butanol (methyl ethyl alcohol)
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "?", // 74.122 g/mol
+    sE: "35724", // -2648 kJ/mol
+    sFormula: "Unknown",
+  },
+  {
+    sName: "Unknown 5", // CycloButanol
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "?", // 56.107 g/mol
+    sE: "44949", // -2522 kJ/mol
+    sFormula: "Unknown",
   },
 ];
