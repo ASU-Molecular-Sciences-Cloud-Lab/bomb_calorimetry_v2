@@ -1,5 +1,9 @@
 <template>
-  <v-app-bar scroll-behavior="elevate" color="purple" style="font-size: medium">
+  <v-app-bar
+    scroll-behavior="elevate"
+    color="rgb(140, 29, 64)"
+    style="font-size: medium"
+  >
     <v-app-bar-title>
       <v-icon
         @click="$router.push('/')"
