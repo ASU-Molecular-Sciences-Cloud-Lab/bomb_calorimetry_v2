@@ -15,10 +15,36 @@
       <br />
       <div class="date"></div>
     </div>
-
-    Benzoic Acid: 26,425 J/g <br />
-    Iron Wire: 5,858 J/g <br />
-    R: 8.314 J/mole-K
+    Heat of Combustion
+    <v-table>
+      <tbody>
+        <tr>
+          <td>
+            <a href="https://en.wikipedia.org/wiki/Benzoic_acid"
+              >Benzoic Acid</a
+            >
+          </td>
+          <td>26,425 J/g</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://www.americanelements.com/iron-wire-7439-89-6"
+              >Iron Wire</a
+            >
+          </td>
+          <td>5,858 J/g</td>
+        </tr>
+      </tbody>
+    </v-table>
+    <a href="https://en.wikipedia.org/wiki/Gas_constant">Gas Constant</a>
+    <v-table>
+      <tbody>
+        <tr>
+          <td><a href="https://en.wikipedia.org/wiki/Gas_constant">R</a></td>
+          <td>8.314 J/mole-K</td>
+        </tr>
+      </tbody>
+    </v-table>
   </div>
 </template>
 
