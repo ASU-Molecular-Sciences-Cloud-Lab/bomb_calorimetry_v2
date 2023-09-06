@@ -100,6 +100,36 @@ export const Samples = [
     sFormula: "C10H8",
   },
   {
+    sName: "Azulene", // Crystalline Azulene
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "128.174", // 128.174 g/mol
+    sE: "41277", // -1264.5 kcal/mol
+    sFormula: "C10H8",
+  },
+  /*{
+    sName: "Fulvalene",
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "128.174",
+    sE: "", // can't find a paper on this
+    sFormula: "C10H8",
+  },*/
+  /*{
+    sName: "Bicyclo[6.2.0]decapentaene",
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "128.174",
+    sE: "41277", // can't find a paper on this
+    sFormula: "C10H8",
+  },*/
+  {
     sName: "Benzil",
     sC: "14",
     sH: "10",
@@ -180,53 +210,103 @@ export const Samples = [
     sFormula: "C12H22O11",
   },
   {
-    sName: "Unknown 1", // Acetylsalicylic Acid (aspirin)
+    sName: "Aspirin", // Acetylsalicylic Acid (aspirin)
     sC: "",
     sH: "",
     sO: "",
     sG: "",
-    sM: "?", // 180.15742 g/mol
+    sM: "180.157", // 180.15742 g/mol
     sE: "21795", // -3926.71 kJ/mol
-    sFormula: "Unknown",
+    sFormula: "C9H8O4",
   },
-  {
-    sName: "Unknown 2", // Crystalline Azulene
+  /*{
+    sName: "Ibuprofen",
     sC: "",
     sH: "",
     sO: "",
     sG: "",
-    sM: "?", // 128.174 g/mol
-    sE: "41277", // -1264.5 kcal/mol
-    sFormula: "Unknown",
-  },
+    sM: "206.29",
+    sE: "", // canm't find a paper on this
+    sFormula: "C13H18O2",
+  },*/
   {
-    sName: "Unknown 3", // 1-Butanol
+    sName: "Naproxen",
     sC: "",
     sH: "",
     sO: "",
     sG: "",
-    sM: "?", // 74.12 g/mol
+    sM: "230.26",
+    sE: "30515",
+    sFormula: "C14H14O3",
+  },
+  {
+    sName: "1-Butanol", // 1-Butanol
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "74.122", // 74.12 g/mol
     sE: "36063", // -2673 kJ/mol
-    sFormula: "Unknown",
+    sFormula: "C4H9OH",
   },
   {
-    sName: "Unknown 4", // 2-Butanol (methyl ethyl alcohol)
+    sName: "2-Butanol", // 2-Butanol (methyl ethyl alcohol)
     sC: "",
     sH: "",
     sO: "",
     sG: "",
-    sM: "?", // 74.122 g/mol
+    sM: "74.122", // 74.122 g/mol
     sE: "35724", // -2648 kJ/mol
-    sFormula: "Unknown",
+    sFormula: "C4H10O",
   },
   {
-    sName: "Unknown 5", // CycloButanol
+    sName: "Cyclobutanol", // CycloButanol
     sC: "",
     sH: "",
     sO: "",
     sG: "",
-    sM: "?", // 56.107 g/mol
+    sM: "56.107", // 56.107 g/mol
     sE: "44949", // -2522 kJ/mol
-    sFormula: "Unknown",
+    sFormula: "C4H7OH",
+  },
+  {
+    sName: "Sorbitol",
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "182.17",
+    sE: "16519",
+    sFormula: "C6H14O6",
+  },
+  /*{
+    sName: "Altoid",
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "",
+    sE: "", // can't find a paper on this
+    sFormula: "",
+  },*/
+  {
+    sName: "Maltitol",
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "344.31",
+    sE: "10000",
+    sFormula: "C12H24O11",
+  },
+  {
+    sName: "Ethanol",
+    sC: "",
+    sH: "",
+    sO: "",
+    sG: "",
+    sM: "46.069",
+    sE: "29685",
+    sFormula: "C2H6O",
   },
 ];
