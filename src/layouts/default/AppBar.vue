@@ -16,7 +16,7 @@
         class="display-1"
         style="cursor: pointer"
       >
-        YargerLab Bomb Calorimetry
+        Bomb Calorimetry Simulator
       </span>
     </v-app-bar-title>
 
