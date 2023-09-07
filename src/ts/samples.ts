@@ -226,7 +226,7 @@ export const Samples = [
     sO: "",
     sG: "",
     sM: "206.29",
-    sE: "", // canm't find a paper on this
+    sE: "", // can't find a paper on this
     sFormula: "C13H18O2",
   },*/
   {

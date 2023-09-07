@@ -1,6 +1,26 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="text-center fill-height">
+      <v-alert
+        v-if="
+          exp.sampleWgt < 0.2 ||
+          exp.sampleWgt > 2 ||
+          exp.itWater < 24 ||
+          exp.itWater > 30
+        "
+        border="start"
+        variant="tonal"
+        color="red"
+      >
+        <div v-if="exp.sampleWgt < 0.2 || exp.sampleWgt > 2">
+          <strong>Warning!</strong> Sample weight must be between 0.2 and 2
+          grams.
+        </div>
+        <div v-if="exp.itWater < 24 || exp.itWater > 30">
+          <strong>Warning!</strong> Water temperatuer be between 24 and 30 °C.
+        </div>
+      </v-alert>
+
       <h2>Run the simulation</h2>
       <h3 id="sample_name"></h3>
 
@@ -18,7 +38,9 @@
                   single-line
                   type="number"
                   :disabled="ran != 0 || $store.getters.getSample < 0"
-                />
+                >
+                  <template v-slot:append>g</template>
+                </v-text-field>
                 <v-text-field
                   v-else-if="item.name === 'Water Temp'"
                   v-model="exp.itWater"
@@ -26,8 +48,18 @@
                   single-line
                   type="number"
                   :disabled="ran != 0 || $store.getters.getSample < 0"
-                />
-                <div v-else>{{ item.value }}</div>
+                >
+                  <template v-slot:append>°C</template>
+                </v-text-field>
+                <span v-else>
+                  {{
+                    item.value +
+                    (() => {
+                      if (item.name.includes("Temp")) return " °C";
+                      else return " g";
+                    })()
+                  }}
+                </span>
               </td>
             </tr>
           </tbody>
@@ -38,7 +70,14 @@
         <v-btn
           color="red"
           @click="experiment"
-          :disabled="ran != 0 || $store.getters.getSample < 0"
+          :disabled="
+            ran != 0 ||
+            $store.getters.getSample < 0 ||
+            exp.sampleWgt < 0.2 ||
+            exp.sampleWgt > 2 ||
+            exp.itWater < 24 ||
+            exp.itWater > 30
+          "
           >Ignite</v-btn
         >
         <v-spacer />
@@ -184,7 +223,7 @@ export default {
           [{
             x: this.exp.g_X,
             y: this.exp.g_Y,
-            mode: 'lines',
+            mode: 'markers',
           }],
           {
             margin: { t: 0 },
@@ -297,7 +336,7 @@ export default {
           x: this.exp.g_X,
           y: this.exp.g_Y,
           name: 'Data',
-          mode: 'lines',
+          mode: 'markers',
         },
         {
           x: l1_x,
