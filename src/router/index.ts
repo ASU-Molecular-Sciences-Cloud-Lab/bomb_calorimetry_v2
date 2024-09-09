@@ -40,6 +40,16 @@ const routes = [
         name: "Calorimetry",
         component: () => import("@/views/Calorimetry.vue"),
       },
+      {
+        path: "old/experiment",
+        name: "Old Experiment",
+        component: () => import("@/views/Experiment_old.vue"),
+      },
+      {
+        path: "old/calorimetry",
+        name: "Old Calorimetry",
+        component: () => import("@/views/Calorimetry_old.vue"),
+      },
     ],
   },
 ];

@@ -83,18 +83,10 @@
         <v-spacer />
         <v-btn
           color="green"
-          @click="download"
+          @click="extrapolate"
           :disabled="ran != 1 || $store.getters.getSample < 0"
+          >Extrapolate</v-btn
         >
-          Download Data
-          <!-- <p v-if="ran == 1">Download Data</p> -->
-          <!-- <v-progress-circular
-            v-else
-            color="purple"
-            indeterminate
-          ></v-progress-circular> -->
-        </v-btn>
-
         <v-spacer />
         <v-dialog
           v-model="dialog"
@@ -146,8 +138,8 @@
                   </tbody>
                 </v-table>
 
-                <!-- <h4>T initial: {{ numberOrString(T.Ti) }}°C</h4> -->
-                <!-- <h4>T final: {{ numberOrString(T.Tf) }}°C</h4> -->
+                <h4>T initial: {{ numberOrString(T.Ti) }}°C</h4>
+                <h4>T final: {{ numberOrString(T.Tf) }}°C</h4>
               </v-col>
             </v-row>
           </v-card>
@@ -211,7 +203,7 @@ export default {
         y: []
       }],
       {
-        // margin: { t: 0 },
+        margin: { t: 0 },
         xaxis: {
           title: 'Time (min)'
         },
@@ -231,45 +223,26 @@ export default {
         this.data = this.exp.output;
         this.output = output;
 
-        // Animate scatter plot
-        let f_dist = 25;
-
-        // for (let i = 0; i < this.exp.g_X.length; i++) {
-        for (let i = 0; i < this.exp.g_X.length; i++) {
-          let delay = 6*20*f_dist + i * f_dist;
-          if (i < 6) {
-            delay = i * 20*f_dist;
-          } else if (i >= this.exp.g_X.length - 7) {
-            delay = 6*20*f_dist + (this.exp.g_X.length - 7) * f_dist + (i - this.exp.g_X.length + 7) * 20*f_dist;
-          }
-
-          setTimeout(() => {
-            Plotly.newPlot(
-              GRAPH,
-              {
-                data: [{
-                  x: this.exp.g_X.slice(0, i),
-                  y: this.exp.g_Y.slice(0, i),
-                  mode: 'markers',
-                }]
-              },
-              {
-                xaxis: {
-                  title: 'Time (min)'
-                },
-                yaxis: {
-                  title: 'Temperature (°C)'
-                }
-              }
-            );
-
-            if (i == this.exp.g_X.length - 1) {
-              this.ran = 1;
+        Plotly.react(
+          GRAPH,
+          [{
+            x: this.exp.g_X,
+            y: this.exp.g_Y,
+            mode: 'markers',
+          }],
+          {
+            margin: { t: 0 },
+            xaxis: {
+              title: 'Time (min)'
+            },
+            yaxis: {
+              title: 'Temperature (°C)'
             }
-          }, delay);
-        }
+          }
+        );
 
         this.tableData[4].value = Math.round(this.exp.wireAfter*1000) / 1000;
+        this.ran = 1;
       }
 
       // Finalize tableData
@@ -447,34 +420,6 @@ export default {
       } else {
         return Math.round(x*1000) / 1000;
       }
-    },
-    download() {
-      const element = document.createElement('a');
-
-      // Add header information
-      let dat = "";
-      dat += "Calorimeter Code," + this.$store.getters.getCalorimeterCode + "\n";
-      dat += "Sample Name," + Samples[this.$store.getters.getSample].sName + "\n";
-      dat += "Formula," + Samples[this.$store.getters.getSample].sFormula + "\n";
-      dat += "Molecular Weight," + Math.round(this.samples[this.$store.getters.getSample].sM * 1000) / 1000 + " g/mol\n";
-      dat += "Sample Weight," + Math.round(this.exp.sampleWgt * 1000) / 1000 + " g\n";
-      dat += "Water Temp," + Math.round(this.exp.itWater * 1000) / 1000 + " deg C\n";
-      dat += "Room Temp," + Math.round(this.exp.tRoom * 1000) / 1000 + " deg C\n";
-      dat += "Wire Before," + Math.round(this.exp.wireWgt * 1000) / 1000 + " g\n";
-      dat += "Wire After," + Math.round(this.exp.wireAfter * 1000) / 1000 + " g\n";
-
-      dat += this.data;
-
-      const file = new Blob([dat], {type: 'text/plain'});
-      element.href = URL.createObjectURL(file);
-
-      const sampleId = this.$store.getters.getSample;
-      let name = Samples[sampleId].sName;
-      name = name.replace(/ /g, '_');
-      name = name.toLowerCase();
-      element.download = 'data_' + name + '_cc' + this.$store.getters.getCalorimeterCode + '.csv';
-      document.body.appendChild(element); // Required for this to work in FireFox
-      element.click();
     }
   },
 };

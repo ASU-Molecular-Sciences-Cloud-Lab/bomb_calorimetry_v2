@@ -6,6 +6,7 @@ export default createStore({
     return {
       sampleId: -1,
       name: "",
+      calorimeterCode: "",
     };
   },
   getters: {
@@ -14,6 +15,9 @@ export default createStore({
     },
     getName: (state: any) => {
       return state.name;
+    },
+    getCalorimeterCode: (state: any) => {
+      return state.calorimeterCode;
     },
   },
   mutations: {
@@ -24,6 +28,9 @@ export default createStore({
     },
     setName(state: any, name: string) {
       state.name = name;
+    },
+    setCalorimeterCode(state: any, code: string) {
+      state.calorimeterCode = code;
     },
   },
 });

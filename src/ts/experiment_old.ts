@@ -1,27 +1,5 @@
 import { Samples } from "./samples";
 
-function sfc32(a: number, b: number, c: number, d: number) {
-  return function () {
-    a |= 0;
-    b |= 0;
-    c |= 0;
-    d |= 0;
-    const t = (((a + b) | 0) + d) | 0;
-    d = (d + 1) | 0;
-    a = b ^ (b >>> 9);
-    b = (c + (c << 3)) | 0;
-    c = (c << 21) | (c >>> 11);
-    c = (c + t) | 0;
-    return (t >>> 0) / 4294967296;
-  };
-}
-
-function getRandomInt(min: number, max: number) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 export class Experiment {
   sampleId: number;
   cBomb: number;
@@ -43,26 +21,15 @@ export class Experiment {
   times: Array<number>;
   temps: Array<number>;
 
-  rand: any;
-
   output = "";
 
   g_X: Array<number>;
   g_Y: Array<number>;
 
-  constructor(
-    sampleId: number,
-    seed_a: number = getRandomInt(0, 10),
-    seed_b: number = getRandomInt(0, 10),
-    seed_c: number = getRandomInt(0, 10),
-    seed_d: number = getRandomInt(0, 10)
-  ) {
-    // console.log("Using seed", seed_a, seed_b, seed_c, seed_d);
-    this.rand = sfc32(seed_a, seed_b, seed_c, seed_d);
-
+  constructor(sampleId: number) {
     // v1 - __header.htm
     this.sampleId = sampleId;
-    this.cBomb = 1182 + 600 * this.rand();
+    this.cBomb = 1182 + 600 * Math.random();
     this.tRoom = 22 + 3.8 * Math.random();
     this.sampleWgt = Math.round(9000 + 2000 * Math.random()) / 10000;
     this.tWater = 24 + 0.1 * Math.round(0.5 + 4 * Math.random());
@@ -71,7 +38,7 @@ export class Experiment {
     // v1 - exp.htm
     this.cContents = 50;
     this.cParts = 150;
-    this.cWater = 8368 + 8 * this.rand();
+    this.cWater = 8368 + 8 * Math.random();
     this.cRig = this.cWater + this.cParts;
     this.cTotal = this.cBomb + this.cContents + this.cWater + this.cParts;
     this.wireWgt = (200 + 100 * Math.random()) / 10000;
@@ -187,12 +154,12 @@ export class Experiment {
 
     // Output string
     i = 1;
-    let isay = "time,temp\n";
+    let isay = "  time       temp\n==============\n";
     let dummy = "";
     for (i == 1; i <= counter; i++) {
       dummy = Math.round(100 * this.times[i]).toString();
       if (this.times[i] < 10) dummy = " " + dummy;
-      isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + ",";
+      isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + "      ";
       dummy = Math.round(1000 * this.temps[i]).toString();
       isay += dummy.substring(0, 2) + "." + dummy.substring(2) + "\n";
     }

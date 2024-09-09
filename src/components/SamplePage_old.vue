@@ -36,7 +36,7 @@
       <v-btn
         color="green"
         :disabled="!(selected.length > 0) || calorimeterCode.length !== 4"
-        to="/calorimetry"
+        to="/old/calorimetry"
         @click="setSample(samples.indexOf(selected[0]))"
         >Take it to the scale</v-btn
       >
