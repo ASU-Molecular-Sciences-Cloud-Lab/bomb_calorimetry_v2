@@ -1,26 +1,70 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="text-center fill-height">
-      <h2>Set Calorimeter Code</h2>
+      <h2>1. Set Calorimeter Code</h2>
       <p>
-        Each 4-digit code corresponds to a unique calorimeter constant. Across
+        Each 4-digit code is a serial number that corresponds to a unique Parr
+        Oxygen Bomb Combustion Calorimeter's calorimeter constant. <br />Across
         different experiments, you should use the same code to keep it constant
       </p>
 
       <!-- Make fixed width container -->
-      <v-container class="d-flex justify-center" style="width: 200px">
-        <v-text-field
-          v-model="calorimeterCode"
-          label="Calorimeter Code"
-          type="number"
-          outlined
-          dense
-          clearable
-          :rules="rules.calorimeterCode"
-        ></v-text-field>
+      <v-container class="d-flex justify-center" style="width: 400px">
+        <v-col>
+          <v-text-field
+            v-model="calorimeterCode"
+            label="Calorimeter Code"
+            type="number"
+            outlined
+            dense
+            clearable
+            :rules="rules.calorimeterCode"
+          ></v-text-field>
+
+          <v-dialog
+            v-model="dialog"
+            max-width="290"
+            persistent
+            hide-overlay
+            transition="dialog-bottom-transition"
+          >
+            <template v-slot:activator="{ props: activatorProps }">
+              <v-btn
+                color="green"
+                :disabled="calorimeterCode.length !== 4"
+                v-bind="activatorProps"
+                >Instructor Decode
+              </v-btn>
+            </template>
+
+            <v-card>
+              <v-card-title class="headline">Instructor Decode</v-card-title>
+              <v-card-text>
+                <v-text-field
+                  v-model="instructorPassword"
+                  label="Instructor Password"
+                  outlined
+                  dense
+                  clearable
+                ></v-text-field>
+                <v-btn
+                  :disabled="checkPass(instructorPassword)"
+                  color="green"
+                  @click="showInstructorDecode"
+                >
+                  Decode
+                </v-btn>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="green" text @click="dialog = false">Close</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-col>
       </v-container>
 
-      <h2>Select your sample</h2>
+      <h2>2. Select your sample</h2>
       <v-data-table
         v-model:items-per-page="itemsPerPage"
         v-model="selected"
@@ -46,11 +90,28 @@
 
 <script lang="js">
 import { Samples } from "@/ts/samples"
+import { md5 } from "@/ts/md5.js"
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function sfc32(a, b, c, d) {
+  return function () {
+    a |= 0;
+    b |= 0;
+    c |= 0;
+    d |= 0;
+    const t = (((a + b) | 0) + d) | 0;
+    d = (d + 1) | 0;
+    a = b ^ (b >>> 9);
+    b = (c + (c << 3)) | 0;
+    c = (c << 21) | (c >>> 11);
+    c = (c + t) | 0;
+    return (t >>> 0) / 4294967296;
+  };
 }
 
 export default {
@@ -74,13 +135,38 @@ export default {
           (v) => !!v || 'Calorimeter Code is required',
           (v) => (v && v.length === 4) || 'Calorimeter Code must be 4 digits'
         ]
-      }
+      },
+      dialog: false,
+      instructorPassword: ''
     }
   },
   methods: {
     setSample(sample) {
       this.$store.commit('setSample', sample)
       this.$store.commit('setCalorimeterCode', this.calorimeterCode)
+    },
+    showInstructorDecode() {
+      let seed_a = parseInt(this.calorimeterCode[0]);
+      let seed_b = parseInt(this.calorimeterCode[1]);
+      let seed_c = parseInt(this.calorimeterCode[2]);
+      let seed_d = parseInt(this.calorimeterCode[3]);
+      let rand = sfc32(seed_a, seed_b, seed_c, seed_d);
+
+      for (let i = 0; i < 100; i++) {
+        rand();
+      }
+
+      let cBomb = 1182 + 600 * rand();
+      let cContents = 50;
+      let cParts = 150;
+      let cWater = 8368 + 8 * rand();
+
+      let cTotal = cBomb + cContents + cParts + cWater;
+
+      alert('Calorimeter Constant: ' + cTotal.toFixed(2) + ' J/K');
+    },
+    checkPass(pass) {
+      return md5(pass) !== '2b268ff28f38deb26abf16dfe4c76d9a';
     }
   },
 };

@@ -45,7 +45,8 @@ export class Experiment {
 
   rand: any;
 
-  output = "";
+  csv_output = "";
+  res_output = "";
 
   g_X: Array<number>;
   g_Y: Array<number>;
@@ -59,6 +60,9 @@ export class Experiment {
   ) {
     // console.log("Using seed", seed_a, seed_b, seed_c, seed_d);
     this.rand = sfc32(seed_a, seed_b, seed_c, seed_d);
+    for (let i = 0; i < 100; i++) {
+      this.rand();
+    }
 
     // v1 - __header.htm
     this.sampleId = sampleId;
@@ -186,17 +190,30 @@ export class Experiment {
     }
 
     // Output string
-    i = 1;
-    let isay = "time,temp\n";
+    let isay = "=====,=====\nTime (s), Temperature (C)\n";
     let dummy = "";
-    for (i == 1; i <= counter; i++) {
+    for (i = 0; i <= counter; i++) {
+      isay +=
+        (this.times[i] * 60).toFixed(2) + "," + this.temps[i].toFixed(2) + "\n";
+      // dummy = Math.round(100 * this.times[i]).toString();
+      // if (this.times[i] < 10) dummy = " " + dummy;
+      // isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + ",";
+      // dummy = Math.round(1000 * this.temps[i]).toString();
+      // isay += dummy.substring(0, 2) + "." + dummy.substring(2) + "\n";
+    }
+    this.csv_output = isay;
+
+    isay = "Time (m)   Temp (°C)\n====================\n";
+    dummy = "";
+    for (i = 0; i <= counter; i++) {
       dummy = Math.round(100 * this.times[i]).toString();
+      if (i === 0) dummy = "000";
       if (this.times[i] < 10) dummy = " " + dummy;
-      isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + ",";
+      isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + "      ";
       dummy = Math.round(1000 * this.temps[i]).toString();
       isay += dummy.substring(0, 2) + "." + dummy.substring(2) + "\n";
     }
-    this.output = isay;
+    this.res_output = isay;
 
     return this.compute();
   }

@@ -5,7 +5,7 @@
         v-if="
           exp.sampleWgt < 0.2 ||
           exp.sampleWgt > 2 ||
-          exp.itWater < 24 ||
+          exp.itWater < 20 ||
           exp.itWater > 30
         "
         border="start"
@@ -16,12 +16,12 @@
           <strong>Warning!</strong> Sample weight must be between 0.2 and 2
           grams.
         </div>
-        <div v-if="exp.itWater < 24 || exp.itWater > 30">
-          <strong>Warning!</strong> Water temperatuer be between 24 and 30 °C.
+        <div v-if="exp.itWater < 20 || exp.itWater > 30">
+          <strong>Warning!</strong> Water temperature be between 20 and 30 °C.
         </div>
       </v-alert>
 
-      <h2>Run the simulation</h2>
+      <h2>Run the Simulation</h2>
       <h3 id="sample_name"></h3>
 
       <v-row align="center" justify="center" style="margin-top: 20px">
@@ -56,6 +56,7 @@
                     item.value +
                     (() => {
                       if (item.name.includes("Temp")) return " °C";
+                      else if (item.name.includes("Volume")) return " L";
                       else return " g";
                     })()
                   }}
@@ -75,7 +76,7 @@
             $store.getters.getSample < 0 ||
             exp.sampleWgt < 0.2 ||
             exp.sampleWgt > 2 ||
-            exp.itWater < 24 ||
+            exp.itWater < 20 ||
             exp.itWater > 30
           "
           >Ignite</v-btn
@@ -107,7 +108,7 @@
               v-bind="props"
               color="blue"
               :disabled="ran < 1 || $store.getters.getSample < 0"
-              >View Results</v-btn
+              >View Data</v-btn
             >
           </template>
           <v-card>
@@ -115,11 +116,19 @@
               <v-btn icon dark @click="dialog = false">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
-              <v-toolbar-title>Test Results</v-toolbar-title>
+              <v-toolbar-title
+                >Bomb Calorimetry Simulation Data</v-toolbar-title
+              >
             </v-toolbar>
 
             <v-row style="margin: 10px 20%">
-              <v-textarea v-model="data" auto-grow readonly> </v-textarea>
+              <v-textarea
+                v-model="res_data"
+                auto-grow
+                readonly
+                style="font-family: monospace"
+              >
+              </v-textarea>
               <v-col fluid>
                 <h2>{{ samples[$store.getters.getSample].sName }}</h2>
                 <h3>{{ samples[$store.getters.getSample].sFormula }}</h3>
@@ -138,6 +147,7 @@
                           item.value +
                           (() => {
                             if (item.name.includes("Temp")) return " °C";
+                            else if (item.name.includes("Volume")) return " L";
                             else return " g";
                           })()
                         }}
@@ -195,10 +205,11 @@ export default {
     const cc_d = Number(calorimeter_code[3]);
     this.exp = new Experiment(sampleId, cc_a, cc_b, cc_c, cc_d);
     this.tableData = [
-      { name: 'Sample Weight', value: Math.round(this.exp.sampleWgt*1000) / 1000 },
-      { name: 'Water Temp', value: Math.round(this.exp.tWater*1000) / 1000 },
-      { name: 'Room Temp', value: Math.round(this.exp.tRoom*1000) / 1000 },
-      { name: 'Wire Before', value: Math.round(this.exp.wireWgt*1000) / 1000 },
+      { name: 'Sample Weight', value: this.exp.sampleWgt.toFixed(4) },
+      { name: 'Water Temp', value: this.exp.tWater.toFixed(2) },
+      { name: 'Room Temp', value: this.exp.tRoom.toFixed(2) },
+      { name: 'Water Volume', value: "2.0" },
+      { name: 'Wire Before', value: this.exp.wireWgt.toFixed(3) },
       { name: 'Wire After', value: '?'},
     ]
 
@@ -208,11 +219,15 @@ export default {
       GRAPH,
       [{
         x: [],
-        y: []
+        y: [],
+        mode: 'markers',
       }],
       {
-        // margin: { t: 0 },
+        width: 550,
+        height: 300,
+        margin: { t: 0, l: 0, r: 0, b: 0 },
         xaxis: {
+          range: [0, 17],
           title: 'Time (min)'
         },
         yaxis: {
@@ -226,16 +241,18 @@ export default {
     experiment() {
       const sampleId = this.$store.getters.getSample;
       if (sampleId >= 0) {
+        this.ran = -1;
         let output = this.exp.experiment();
 
-        this.data = this.exp.output;
+        this.csv_data = this.exp.csv_output;
+        this.res_data = this.exp.res_output;
         this.output = output;
 
         // Animate scatter plot
         let f_dist = 25;
 
-        // for (let i = 0; i < this.exp.g_X.length; i++) {
         for (let i = 0; i < this.exp.g_X.length; i++) {
+        // for (let i = 0; i < 10; i++) {
           let delay = 6*20*f_dist + i * f_dist;
           if (i < 6) {
             delay = i * 20*f_dist;
@@ -244,202 +261,41 @@ export default {
           }
 
           setTimeout(() => {
+            GRAPH = document.getElementById('graph');
+            GRAPH.innerHTML = '';
+            GRAPH.classList.remove('js-plotly-plot');
+            GRAPH.style = '';
+
             Plotly.newPlot(
               GRAPH,
+              {data: [{
+                x: this.exp.g_X.slice(0, i),
+                y: this.exp.g_Y.slice(0, i),
+                mode: 'markers',
+              }]},
               {
-                data: [{
-                  x: this.exp.g_X.slice(0, i),
-                  y: this.exp.g_Y.slice(0, i),
-                  mode: 'markers',
-                }]
-              },
-              {
-                xaxis: {
-                  title: 'Time (min)'
-                },
-                yaxis: {
-                  title: 'Temperature (°C)'
-                }
+                width: 550,
+                height: 300,
+                margin: { t: 0, l: 0, r: 0, b: 0 }
               }
             );
+            Plotly.relayout(GRAPH, {
+              'xaxis.range': [0, 17],
+              'xaxis.title': 'Time (min)',
+              'yaxis.title': 'Temperature (°C)'
+            })
 
             if (i == this.exp.g_X.length - 1) {
               this.ran = 1;
+              this.tableData[5].value = this.exp.wireAfter.toFixed(3);
             }
           }, delay);
         }
-
-        this.tableData[4].value = Math.round(this.exp.wireAfter*1000) / 1000;
       }
 
       // Finalize tableData
-      this.tableData[0].value = Math.round(this.exp.sampleWgt*1000) / 1000;
-      this.tableData[1].value = Math.round(this.exp.itWater*1000) / 1000;
-    },
-    extrapolate() {
-      let l1_x = [];
-      let l1_y = [];
-      let l2_x = [];
-      let l2_y = [];
-
-      // Compute lines
-      let aint = this.output.aint;
-      let aslope = this.output.aslope;
-      let bint = this.output.bint;
-      let bslope = this.output.bslope;
-
-      let tt = 0;
-      let i = 1;
-      for (i == 1; i < 20; i++) {
-        tt = aint + aslope * (0.125 + i / 2);
-        l1_x.push(0.5 * i);
-        l1_y.push(tt);
-      }
-
-      i = 10;
-      for (i == 10; i < 36; i++) {
-        tt = bint + bslope * (0.125 + i / 2);
-        l2_x.push(0.5 * i);
-        l2_y.push(tt);
-      }
-
-      // Compute initial Ti and Tf
-      let x0 = 7;
-      let y0 = aint + aslope * (0.125 + x0);
-      let y1 = bint + bslope * (0.125 + x0);
-      this.T.Ti = y0;
-      this.T.Tf = y1;
-
-      // Setup vertical line between Ti and Tf
-      let verticalLine = {
-        type: 'line',
-        x0: x0,
-        y0: y0,
-        x1: x0,
-        y1: y1,
-        line: {
-          color: 'grey',
-          width: 1.5,
-          dash: 'dot'
-        }
-      };
-
-      // Setup layout
-      let layout = {
-        margin: { t: 0 },
-        hovermode: 'x',
-        xaxis: {
-          title: 'Time (min)',
-          spikemode: 'across'
-        },
-        yaxis: {
-          title: 'Temperature (°C)'
-        },
-        shapes: [verticalLine],
-        annotations: [
-          {
-            x: x0,
-            y: y0,
-            xref: 'x',
-            yref: 'y',
-            text: 'T initial = ' + Math.round(y0*1000) / 1000,
-            showarrow: true,
-            arrowhead: 7,
-            ax: 10,
-            ay: 20
-          },
-          {
-            x: x0,
-            y: y1,
-            xref: 'x',
-            yref: 'y',
-            text: 'T final = ' + Math.round(y1*1000) / 1000,
-            showarrow: true,
-            arrowhead: 7,
-            ax: -10,
-            ay: -20
-          }
-        ]
-      };
-
-      // Finalize data with extrapolated lines
-      let data = [
-        {
-          x: this.exp.g_X,
-          y: this.exp.g_Y,
-          name: 'Data',
-          mode: 'markers',
-        },
-        {
-          x: l1_x,
-          y: l1_y,
-          name: '',
-          mode: 'lines',
-          line: {
-            dash: 'dash'
-          }
-        },
-        {
-          x: l2_x,
-          y: l2_y,
-          name: '',
-          mode: 'lines',
-          line: {
-            dash: 'dash'
-          }
-        }
-      ];
-
-      // Update Plotly
-      Plotly.react(GRAPH, data, layout);
-
-      // Necessary beceause the Plotly click event captures a different `this` context
-      // eslint-disable-next-line
-      const obj = this;
-
-      // Graph click events
-      GRAPH.on('plotly_click', function(data){
-        const x = data.points[0].x;
-        const y1 = aint + aslope * (0.125 + x);
-        const y2 = bint + bslope * (0.125 + x);
-
-        verticalLine.x0 = x;
-        verticalLine.x1 = x;
-        verticalLine.y0 = y1;
-        verticalLine.y1 = y2;
-        obj.T.Ti = y1;
-        obj.T.Tf = y2;
-
-        layout.shapes = [verticalLine];
-        layout.annotations = [
-          {
-            x: x,
-            y: y1,
-            xref: 'x',
-            yref: 'y',
-            text: 'T initial = ' + Math.round(y1*1000) / 1000,
-            showarrow: true,
-            arrowhead: 7,
-            ax: 10,
-            ay: 20
-          },
-          {
-            x: x,
-            y: y2,
-            xref: 'x',
-            yref: 'y',
-            text: 'T final = ' + Math.round(y2*1000) / 1000,
-            showarrow: true,
-            arrowhead: 7,
-            ax: -10,
-            ay: -20
-          }
-        ]
-
-        Plotly.relayout(GRAPH, layout);
-      });
-
-      this.ran = 2;
+      this.tableData[0].value = parseFloat(this.exp.sampleWgt).toFixed(4);
+      this.tableData[1].value = parseFloat(this.exp.itWater).toFixed(2);
     },
     numberOrString(x) {
       if (typeof x === 'string' || x instanceof String) {
@@ -453,17 +309,19 @@ export default {
 
       // Add header information
       let dat = "";
-      dat += "Calorimeter Code," + this.$store.getters.getCalorimeterCode + "\n";
+      dat += "Website,https://asu-molecular-sciences-cloud-lab.github.io/bomb_calorimetry_v2/ \n";
+      dat += "Simulated Calorimeter,Parr #" + this.$store.getters.getCalorimeterCode + "\n";
       dat += "Sample Name," + Samples[this.$store.getters.getSample].sName + "\n";
       dat += "Formula," + Samples[this.$store.getters.getSample].sFormula + "\n";
-      dat += "Molecular Weight," + Math.round(this.samples[this.$store.getters.getSample].sM * 1000) / 1000 + " g/mol\n";
-      dat += "Sample Weight," + Math.round(this.exp.sampleWgt * 1000) / 1000 + " g\n";
-      dat += "Water Temp," + Math.round(this.exp.itWater * 1000) / 1000 + " deg C\n";
-      dat += "Room Temp," + Math.round(this.exp.tRoom * 1000) / 1000 + " deg C\n";
-      dat += "Wire Before," + Math.round(this.exp.wireWgt * 1000) / 1000 + " g\n";
-      dat += "Wire After," + Math.round(this.exp.wireAfter * 1000) / 1000 + " g\n";
+      dat += "Molecular Weight (g/mol)," + parseFloat(this.samples[this.$store.getters.getSample].sM).toFixed(3) + "\n";
+      dat += "Sample Weight (g)," + parseFloat(this.exp.sampleWgt).toFixed(4) + "\n";
+      dat += "Water Temp (deg C)," + parseFloat(this.exp.itWater).toFixed(2) + "\n";
+      dat += "Room Temp (deg C)," + parseFloat(this.exp.tRoom).toFixed(2) + "\n";
+      dat += "Water Volume (L)," + "2.0" + "\n";
+      dat += "Wire Before (g)," + parseFloat(this.exp.wireWgt).toFixed(3) + "\n";
+      dat += "Wire After (g)," + parseFloat(this.exp.wireAfter).toFixed(3) + "\n";
 
-      dat += this.data;
+      dat += this.csv_data;
 
       const file = new Blob([dat], {type: 'text/plain'});
       element.href = URL.createObjectURL(file);

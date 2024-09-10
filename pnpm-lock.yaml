@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.8.3
     version: 3.32.1
   plotly.js-dist:
-    specifier: ^2.26.0
-    version: 2.26.0
+    specifier: ^2.35.0
+    version: 2.35.0
   roboto-fontface:
     specifier: '*'
     version: 0.10.0
@@ -5770,8 +5770,8 @@ packages:
       semver-compare: 1.0.0
     dev: true
 
-  /plotly.js-dist@2.26.0:
-    resolution: {integrity: sha512-CgVJfqKtxNA6nCVN4E/x7xFDLXjL8/tK55pA25XJrgwypnQN7S+/sF3yTVRk0OCimRPJ/cHlcffz6nIPK8J8MQ==}
+  /plotly.js-dist@2.35.0:
+    resolution: {integrity: sha512-Q97j36uQSaRkzpxPPePegvUAWEoyaiT9RP9yu522g8HHVPrOgTqtOO+LzHwfqC26uR8ytSpRU1LoX8VVgdkaog==}
     dev: false
 
   /portfinder@1.0.32:

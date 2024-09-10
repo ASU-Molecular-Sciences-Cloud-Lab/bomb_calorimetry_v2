@@ -15,36 +15,35 @@
       <br />
       <div class="date"></div>
     </div>
-    Heat of Combustion
-    <v-table>
-      <tbody>
-        <tr>
-          <td>
-            <a href="https://en.wikipedia.org/wiki/Benzoic_acid"
-              >Benzoic Acid</a
-            >
-          </td>
-          <td>26,425 J/g</td>
-        </tr>
-        <tr>
-          <td>
-            <a href="https://www.americanelements.com/iron-wire-7439-89-6"
-              >Iron Wire</a
-            >
-          </td>
-          <td>5,858 J/g</td>
-        </tr>
-      </tbody>
-    </v-table>
-    <a href="https://en.wikipedia.org/wiki/Gas_constant">Gas Constant</a>
-    <v-table>
-      <tbody>
-        <tr>
-          <td><a href="https://en.wikipedia.org/wiki/Gas_constant">R</a></td>
-          <td>8.314 J/mole-K</td>
-        </tr>
-      </tbody>
-    </v-table>
+    <h3>Heat of Combustion</h3>
+    <v-row>
+      <v-col cols="12" md="6">
+        <a href="https://en.wikipedia.org/wiki/Benzoic_acid">Benzoic Acid</a>
+      </v-col>
+      <v-col cols="12" md="6"> 26,425 J/g </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <a href="https://www.americanelements.com/iron-wire-7439-89-6"
+          >Iron Wire</a
+        >
+      </v-col>
+      <v-col cols="12" md="6"> 5,858 J/g </v-col>
+    </v-row>
+    <br />
+    <v-divider></v-divider>
+    <br />
+    <h3>
+      <a href="https://en.wikipedia.org/wiki/Gas_constant">Gas Constant</a>
+    </h3>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <a href="https://en.wikipedia.org/wiki/Gas_constant">R</a>
+      </v-col>
+      <v-col cols="12" md="6"> 8.314 J/mole-K </v-col>
+    </v-row>
   </div>
 </template>
 
