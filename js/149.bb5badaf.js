@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkbomb_calorimetry_v2"]=self["webpackChunkbomb_calorimetry_v2"]||[]).push([[149],{149:function(t,e,r){r.r(e),r.d(e,{default:function(){return o}});var i=r(9014);const s={src:"Bomb_Calorimetry_Simulator___Discussion.pdf",width:"100%",height:"100%",type:"application/pdf"};var a=(0,i.aZ)({__name:"Discussion",setup(t){return(t,e)=>((0,i.wg)(),(0,i.iD)("embed",s))}});const n=a;var o=n}}]);
+//# sourceMappingURL=149.bb5badaf.js.map
