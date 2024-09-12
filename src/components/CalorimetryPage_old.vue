@@ -220,7 +220,7 @@ export default {
       if (sampleId >= 0) {
         let output = this.exp.experiment();
 
-        this.data = this.exp.output;
+        this.data = this.exp.res_output;
         this.output = output;
 
         Plotly.react(

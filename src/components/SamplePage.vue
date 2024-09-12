@@ -1,7 +1,7 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="text-center fill-height">
-      <h2>1. Set Calorimeter Code</h2>
+      <h2>Calorimeter</h2>
       <p>
         Each 4-digit code is a serial number that corresponds to a unique Parr
         Oxygen Bomb Combustion Calorimeter's calorimeter constant. <br />Across
@@ -20,51 +20,10 @@
             clearable
             :rules="rules.calorimeterCode"
           ></v-text-field>
-
-          <v-dialog
-            v-model="dialog"
-            max-width="290"
-            persistent
-            hide-overlay
-            transition="dialog-bottom-transition"
-          >
-            <template v-slot:activator="{ props: activatorProps }">
-              <v-btn
-                color="green"
-                :disabled="calorimeterCode.length !== 4"
-                v-bind="activatorProps"
-                >Instructor Decode
-              </v-btn>
-            </template>
-
-            <v-card>
-              <v-card-title class="headline">Instructor Decode</v-card-title>
-              <v-card-text>
-                <v-text-field
-                  v-model="instructorPassword"
-                  label="Instructor Password"
-                  outlined
-                  dense
-                  clearable
-                ></v-text-field>
-                <v-btn
-                  :disabled="checkPass(instructorPassword)"
-                  color="green"
-                  @click="showInstructorDecode"
-                >
-                  Decode
-                </v-btn>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="green" text @click="dialog = false">Close</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
         </v-col>
       </v-container>
 
-      <h2>2. Select your sample</h2>
+      <h2>Sample</h2>
       <v-data-table
         v-model:items-per-page="itemsPerPage"
         v-model="selected"
