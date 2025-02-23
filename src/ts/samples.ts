@@ -6,7 +6,7 @@ export const Samples = [
     sO: "2",
     sG: "0.5",
     sM: "122.113",
-    sE: "26415",
+    sE: "26425",
     sFormula: "C7H6O2",
   },
   {

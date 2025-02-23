@@ -78,6 +78,9 @@ export class Experiment {
     this.cWater = 8368 + 8 * this.rand();
     this.cRig = this.cWater + this.cParts;
     this.cTotal = this.cBomb + this.cContents + this.cWater + this.cParts;
+    // console.log("SEARCH ME cBomb: " + this.cBomb);
+    // console.log("SEARCH ME cWater: " + this.cWater);
+    // console.log("SEARCH ME cTotal: " + this.cTotal);
     this.wireWgt = (200 + 100 * Math.random()) / 10000;
     this.wireLoss = (19.99 + 80 * Math.random()) / 10000;
     this.wireAfter = this.wireWgt - this.wireLoss;
@@ -94,105 +97,222 @@ export class Experiment {
     this.g_Y = [];
   }
 
-  experiment() {
+  experiment(addedOxygen: boolean, addedWater: boolean) {
     this.tWater = Number(this.itWater);
 
-    const dt = 0.05;
     let i = 1;
-    let counter = 1;
-    let spacer = 5;
 
-    this.wireLoss += (20 - 40 * Math.random()) / 10000;
+    // this.wireLoss += (20 - 40 * Math.random()) / 10000;
+    let trw = 0;
+    let tbg = 0;
+    let twb = 0;
 
-    this.times[0] = 0;
+    // Rewriting simulation in order to make it cleaner and have constant dt
+    const p_dt = 10; // Plotting frequency proportion to simulation frequency
+    const s_dt = 0.05; // Simulation frequency
 
-    this.temps[0] = this.tWater;
+    let counter = 0; // Number of points simulated
+    let sim_time = 0; // Simulation time
 
-    for (counter == 1; counter < 6; counter++) {
-      this.tWater +=
-        (20 * dt * this.kWater * (this.tRoom - this.tWater)) / this.cTotal;
-      this.tWater += 0.001 - 0.002 * Math.random();
+    const noise_level = 0.02; // Noise level of temperature
 
-      this.times[counter] = counter;
-      this.temps[counter] = this.tWater + 0.002 - 0.004 * Math.random();
+    if (addedOxygen && addedWater) {
+      this.times[0] = 0;
+      this.temps[0] = this.tWater;
 
-      // PLOTS THESE POINTS (p1 => p5)
-      this.g_X.push(counter - 1);
-      this.g_Y.push(this.tWater);
-    }
+      // Before ignition
+      for (i = 0; i < 100; i++) {
+        // Compute diffs
+        trw = this.tRoom - this.tWater;
 
-    counter = 5;
-    i = 101;
-    for (i == 101; i < 105; i++) {
-      this.tWater +=
-        (dt * this.kWater * (this.tRoom - this.tWater)) / this.cTotal;
-      this.tWater += 0.001 - 0.002 * Math.random();
+        this.tWater += (s_dt * this.kWater * trw) / this.cTotal;
+        this.tWater += 0.001 - 0.002 * Math.random();
 
-      // PLOTS THESE POINTS (p101 => p104)
-      this.g_X.push(i / 20);
-      this.g_Y.push(this.tWater);
-    }
-
-    let tBomb = this.tWater;
-    let tGas =
-      this.tWater +
-      (this.sampleWgt * Number(Samples[this.sampleId].sE) +
-        5858 * this.wireLoss) /
-        this.cContents;
-
-    i = 105;
-    for (i == 105; i < 201; i++) {
-      if (i == 160) spacer = 20;
-      tGas += (this.kGas * dt * (tBomb - tGas)) / this.cContents;
-      tBomb +=
-        ((this.kGas * (tGas - tBomb) + this.kBomb * (this.tWater - tBomb)) *
-          dt) /
-        this.cBomb;
-      this.tWater +=
-        ((this.kBomb * (tBomb - this.tWater) +
-          this.kWater * (this.tRoom - this.tWater)) *
-          dt) /
-        this.cRig;
-
-      // PLOTS THESE POINTS (p105 => p200)
-      this.g_X.push(i / 20);
-      this.g_Y.push(this.tWater);
-
-      if (i % spacer == 0) {
         counter += 1;
-        this.times[counter] = i / 20;
-        this.temps[counter] = this.tWater + 0.002 - 0.004 * Math.random();
+        sim_time += s_dt;
+        if (counter % p_dt == 0) {
+          this.times.push(sim_time);
+          this.temps.push(
+            this.tWater + noise_level - 2 * noise_level * Math.random()
+          );
+        }
+      }
+
+      // Ignition
+      let tBomb = this.tWater;
+      let tGas =
+        this.tWater +
+        (this.sampleWgt * Number(Samples[this.sampleId].sE) +
+          5858 * this.wireLoss) /
+          this.cContents;
+
+      for (i = 0; i < 120; i++) {
+        // Compute diffs
+        tbg = tBomb - tGas;
+        twb = this.tWater - tBomb;
+        trw = this.tRoom - this.tWater;
+
+        tGas += (s_dt * this.kGas * tbg) / this.cContents;
+        tBomb += ((this.kGas * -tbg + this.kBomb * twb) * s_dt) / this.cBomb;
+        this.tWater +=
+          ((this.kBomb * -twb + this.kWater * trw) * s_dt) / this.cRig;
+
+        counter += 1;
+        sim_time += s_dt;
+        if (counter % p_dt == 0) {
+          this.times.push(sim_time);
+          this.temps.push(
+            this.tWater + noise_level - 2 * noise_level * Math.random()
+          );
+        }
+      }
+
+      // After ignition
+      for (i = 0; i < 100; i++) {
+        // Compute diffs
+        trw = this.tRoom - this.tWater;
+
+        this.tWater += (s_dt * this.kWater * trw) / this.cTotal;
+        this.tWater += 0.001 - 0.002 * Math.random();
+
+        counter += 1;
+        sim_time += s_dt;
+        if (counter % p_dt == 0) {
+          this.times.push(sim_time);
+          this.temps.push(
+            this.tWater + noise_level - 2 * noise_level * Math.random()
+          );
+        }
+      }
+    } else if (addedWater) {
+      this.times[0] = 0;
+      this.temps[0] = this.tWater;
+
+      for (i = 0; i < 320; i++) {
+        // Compute diffs
+        trw = this.tRoom - this.tWater;
+
+        this.tWater += (s_dt * this.kWater * trw) / this.cTotal;
+        this.tWater += 0.001 - 0.002 * Math.random();
+
+        counter += 1;
+        sim_time += s_dt;
+        if (counter % p_dt == 0) {
+          this.times.push(sim_time);
+          this.temps.push(
+            this.tWater + noise_level - 2 * noise_level * Math.random()
+          );
+        }
+      }
+    } else {
+      this.times[0] = 0;
+      this.temps[0] = this.tRoom;
+
+      for (i = 0; i < 320; i++) {
+        this.tWater = this.tRoom;
+
+        counter += 1;
+        sim_time += s_dt;
+        if (counter % p_dt == 0) {
+          this.times.push(sim_time);
+          this.temps.push(
+            this.tWater + noise_level - 2 * noise_level * Math.random()
+          );
+        }
       }
     }
 
-    i = 11;
-    for (i == 11; i < 19; i++) {
-      tGas += (20 * this.kGas * dt * (tBomb - tGas)) / this.cContents;
-      tBomb +=
-        (20 *
-          (this.kGas * (tGas - tBomb) + this.kBomb * (this.tWater - tBomb)) *
-          dt) /
-        this.cBomb;
-      this.tWater +=
-        (20 *
-          (this.kBomb * (tBomb - this.tWater) +
-            this.kWater * (this.tRoom - this.tWater)) *
-          dt) /
-        this.cRig;
+    this.g_X = this.times;
+    this.g_Y = this.temps;
 
-      // PLOTS THESE POINTS (p220 => p280)
-      this.g_X.push(i);
-      this.g_Y.push(this.tWater);
+    // for (counter == 1; counter < 6; counter++) {
+    //   // Compute diffs
+    //   trw = this.tRoom - this.tWater;
 
-      counter += 1;
-      this.times[counter] = i;
-      this.temps[counter] = this.tWater + 0.002 - 0.004 * Math.random();
-    }
+    //   this.tWater += (20 * dt * this.kWater * trw) / this.cTotal;
+    //   this.tWater += 0.001 - 0.002 * Math.random();
+
+    //   this.times[counter] = counter;
+    //   this.temps[counter] = this.tWater + 0.002 - 0.004 * Math.random();
+
+    //   // PLOTS THESE POINTS (p1 => p5)
+    //   this.g_X.push(counter - 1);
+    //   this.g_Y.push(this.temps[counter]);
+    // }
+
+    // counter = 5;
+    // i = 101;
+    // for (i == 101; i < 105; i++) {
+    //   // Compute diffs
+    //   trw = this.tRoom - this.tWater;
+
+    //   this.tWater += (dt * this.kWater * trw) / this.cTotal;
+    //   this.tWater += 0.001 - 0.002 * Math.random();
+
+    //   // PLOTS THESE POINTS (p101 => p104)
+    //   this.g_X.push(i / 20);
+    //   this.g_Y.push(this.tWater);
+    // }
+
+    // let tBomb = this.tWater;
+    // let tGas =
+    //   this.tWater +
+    //   (this.sampleWgt * Number(Samples[this.sampleId].sE) +
+    //     5858 * this.wireLoss) /
+    //     this.cContents;
+    // // console.log(
+    // //   "SEARCH ME tGas: " +
+    // //     (this.sampleWgt * Number(Samples[this.sampleId].sE) +
+    // //       5858 * this.wireLoss)
+    // // );
+
+    // i = 105;
+    // for (i == 105; i < 201; i++) {
+    //   // Compute diffs
+    //   tbg = tBomb - tGas;
+    //   twb = this.tWater - tBomb;
+    //   trw = this.tRoom - this.tWater;
+
+    //   if (i == 160) spacer = 20;
+    //   tGas += (this.kGas * dt * tbg) / this.cContents;
+    //   tBomb += ((this.kGas * -tbg + this.kBomb * twb) * dt) / this.cBomb;
+    //   this.tWater += ((this.kBomb * -twb + this.kWater * trw) * dt) / this.cRig;
+
+    //   // PLOTS THESE POINTS (p105 => p200)
+    //   this.g_X.push(i / 20);
+    //   this.g_Y.push(this.tWater);
+
+    //   if (i % spacer == 0) {
+    //     counter += 1;
+    //     this.times[counter] = i / 20;
+    //     this.temps[counter] = this.tWater + 0.002 - 0.004 * Math.random();
+    //   }
+    // }
+
+    // i = 11;
+    // for (i == 11; i < 19; i++) {
+    //   // Compute diffs
+    //   tbg = tBomb - tGas;
+    //   twb = this.tWater - tBomb;
+    //   trw = this.tRoom - this.tWater;
+
+    //   tGas += (20 * this.kGas * dt * tbg) / this.cContents;
+    //   tBomb += (20 * (this.kGas * -tbg + this.kBomb * twb) * dt) / this.cBomb;
+    //   this.tWater +=
+    //     (20 * (this.kBomb * -twb + this.kWater * trw) * dt) / this.cRig;
+
+    //   // PLOTS THESE POINTS (p220 => p280)
+    //   this.g_X.push(i);
+    //   this.g_Y.push(this.tWater);
+
+    //   counter += 1;
+    //   this.times[counter] = i;
+    //   this.temps[counter] = this.tWater + 0.002 - 0.004 * Math.random();
+    // }
 
     // Output string
-    let isay = "=====,=====\nTime (s), Temperature (C)\n";
-    let dummy = "";
-    for (i = 0; i <= counter; i++) {
+    let isay = "=====,=====\nTime (s),Temperature (C)\n";
+    for (i = 0; i < this.times.length; i++) {
       isay +=
         (this.times[i] * 60).toFixed(2) + "," + this.temps[i].toFixed(2) + "\n";
       // dummy = Math.round(100 * this.times[i]).toString();
@@ -203,15 +323,17 @@ export class Experiment {
     }
     this.csv_output = isay;
 
-    isay = "Time (m)   Temp (°C)\n====================\n";
-    dummy = "";
-    for (i = 0; i <= counter; i++) {
-      dummy = Math.round(100 * this.times[i]).toString();
-      if (i === 0) dummy = "000";
-      if (this.times[i] < 10) dummy = " " + dummy;
-      isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + "      ";
-      dummy = Math.round(1000 * this.temps[i]).toString();
-      isay += dummy.substring(0, 2) + "." + dummy.substring(2) + "\n";
+    isay = "Time (m)\tTemp (°C)\n====================\n";
+    for (i = 0; i < this.times.length; i++) {
+      isay +=
+        this.times[i].toFixed(2) + "\t\t" + this.temps[i].toFixed(2) + "\n";
+
+      // dummy = Math.round(100 * this.times[i]).toString();
+      // if (i === 0) dummy = "000";
+      // if (this.times[i] < 10) dummy = " " + dummy;
+      // isay += " " + dummy.substring(0, 2) + "." + dummy.substring(2) + "      ";
+      // dummy = Math.round(1000 * this.temps[i]).toString();
+      // isay += dummy.substring(0, 2) + "." + dummy.substring(2) + "\n";
     }
     this.res_output = isay;
 

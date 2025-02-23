@@ -68,6 +68,38 @@
       </v-row>
       <v-row align="center" justify="center">
         <v-spacer />
+        <v-col>
+          <v-btn
+            style="width: 250px"
+            @click="addOxygen"
+            :disabled="
+              addedOxygen ||
+              ran != 0 ||
+              $store.getters.getSample < 0 ||
+              exp.sampleWgt < 0.2 ||
+              exp.sampleWgt > 2 ||
+              exp.itWater < 20 ||
+              exp.itWater > 30
+            "
+          >
+            Add 30 atm of Oxygen
+          </v-btn>
+          <v-btn
+            style="width: 250px"
+            @click="addWater"
+            :disabled="
+              addedWater ||
+              ran != 0 ||
+              $store.getters.getSample < 0 ||
+              exp.sampleWgt < 0.2 ||
+              exp.sampleWgt > 2 ||
+              exp.itWater < 20 ||
+              exp.itWater > 30
+            "
+          >
+            Add 2.0 L of Water
+          </v-btn>
+        </v-col>
         <v-btn
           color="red"
           @click="experiment"
@@ -185,7 +217,9 @@ export default {
       ran: 0,
       tableData: [],
       dialog: false,
-      T: { Ti: "?", Tf: "?" }
+      T: { Ti: "?", Tf: "?" },
+      addedWater: false,
+      addedOxygen: false,
     }
   },
   mounted() {
@@ -208,7 +242,7 @@ export default {
       { name: 'Sample Weight', value: this.exp.sampleWgt.toFixed(4) },
       { name: 'Water Temp', value: this.exp.tWater.toFixed(2) },
       { name: 'Room Temp', value: this.exp.tRoom.toFixed(2) },
-      { name: 'Water Volume', value: "2.0" },
+      // { name: 'Water Volume', value: "2.0" },
       { name: 'Wire Before', value: this.exp.wireWgt.toFixed(3) },
       { name: 'Wire After', value: '?'},
     ]
@@ -238,27 +272,28 @@ export default {
 
   },
   methods: {
+    addWater() {
+      this.addedWater = true;
+    },
+    addOxygen() {
+      this.addedOxygen = true;
+    },
     experiment() {
       const sampleId = this.$store.getters.getSample;
       if (sampleId >= 0) {
         this.ran = -1;
-        let output = this.exp.experiment();
+        let output = this.exp.experiment(this.addedOxygen, this.addedWater);
 
         this.csv_data = this.exp.csv_output;
         this.res_data = this.exp.res_output;
         this.output = output;
 
         // Animate scatter plot
-        let f_dist = 25;
+        let f_dist = 75;
 
         for (let i = 0; i < this.exp.g_X.length; i++) {
         // for (let i = 0; i < 10; i++) {
-          let delay = 6*20*f_dist + i * f_dist;
-          if (i < 6) {
-            delay = i * 20*f_dist;
-          } else if (i >= this.exp.g_X.length - 7) {
-            delay = 6*20*f_dist + (this.exp.g_X.length - 7) * f_dist + (i - this.exp.g_X.length + 7) * 20*f_dist;
-          }
+          let delay = i * f_dist;
 
           setTimeout(() => {
             GRAPH = document.getElementById('graph');
@@ -269,8 +304,8 @@ export default {
             Plotly.newPlot(
               GRAPH,
               {data: [{
-                x: this.exp.g_X.slice(0, i),
-                y: this.exp.g_Y.slice(0, i),
+                x: this.exp.g_X.slice(0, i+1),
+                y: this.exp.g_Y.slice(0, i+1),
                 mode: 'markers',
               }]},
               {
@@ -287,7 +322,7 @@ export default {
 
             if (i == this.exp.g_X.length - 1) {
               this.ran = 1;
-              this.tableData[5].value = this.exp.wireAfter.toFixed(3);
+              this.tableData[4].value = this.exp.wireAfter.toFixed(3);
             }
           }, delay);
         }
