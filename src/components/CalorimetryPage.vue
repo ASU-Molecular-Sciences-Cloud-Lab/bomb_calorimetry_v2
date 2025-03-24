@@ -25,7 +25,33 @@
       <h3 id="sample_name"></h3>
 
       <v-row align="center" justify="center" style="margin-top: 20px">
+        <v-img
+          v-if="!addedOxygen && !addedWater"
+          height="300"
+          src="@/assets/bombcal0.svg"
+        />
+        <v-img
+          v-if="addedOxygen && !addedWater"
+          height="300"
+          src="@/assets/bombcal1.svg"
+        />
+        <v-img
+          v-if="!addedOxygen && addedWater"
+          height="300"
+          src="@/assets/bombcal2.svg"
+        />
+        <v-img
+          v-if="addedOxygen && addedWater"
+          height="300"
+          src="@/assets/bombcal3.svg"
+        />
+
+        <v-spacer />
+
         <div id="graph" style="width: 550px; height: 300px"></div>
+
+        <v-spacer />
+
         <v-table>
           <tbody>
             <tr v-for="item in tableData" :key="item.name">
