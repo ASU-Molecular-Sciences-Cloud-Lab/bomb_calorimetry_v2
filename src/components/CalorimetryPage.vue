@@ -24,33 +24,36 @@
       <h2>Run the Simulation</h2>
       <h3 id="sample_name"></h3>
 
+      <v-img
+        v-if="!addedOxygen && !addedWater"
+        height="300"
+        min-height="300"
+        src="@/assets/bombcal0.svg"
+      />
+      <v-img
+        v-if="addedOxygen && !addedWater"
+        height="300"
+        min-height="300"
+        src="@/assets/bombcal1.svg"
+      />
+      <v-img
+        v-if="!addedOxygen && addedWater"
+        height="300"
+        min-height="300"
+        src="@/assets/bombcal2.svg"
+      />
+      <v-img
+        v-if="addedOxygen && addedWater"
+        height="300"
+        min-height="300"
+        src="@/assets/bombcal3.svg"
+      />
+
       <v-row align="center" justify="center" style="margin-top: 20px">
-        <v-img
-          v-if="!addedOxygen && !addedWater"
-          height="300"
-          src="@/assets/bombcal0.svg"
-        />
-        <v-img
-          v-if="addedOxygen && !addedWater"
-          height="300"
-          src="@/assets/bombcal1.svg"
-        />
-        <v-img
-          v-if="!addedOxygen && addedWater"
-          height="300"
-          src="@/assets/bombcal2.svg"
-        />
-        <v-img
-          v-if="addedOxygen && addedWater"
-          height="300"
-          src="@/assets/bombcal3.svg"
-        />
-
-        <v-spacer />
-
+        <!-- <v-spacer /> -->
         <div id="graph" style="width: 550px; height: 300px"></div>
 
-        <v-spacer />
+        <!-- <v-spacer /> -->
 
         <v-table>
           <tbody>
